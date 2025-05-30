@@ -665,6 +665,77 @@
             font-style: normal;
         }
 
+        /* Fix for thank you page display issues */
+        .thank-you-page.show {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Enhanced form styling */
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            transform: translateY(-1px);
+        }
+
+        /* Submit button enhanced states */
+        .submit-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .submit-button:hover:not(:disabled) {
+            background: linear-gradient(135deg, #059669, #047857);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        .submit-button:disabled {
+            opacity: 0.8;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Loading animation for submit button */
+        .submit-button:disabled::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 15px;
+            width: 16px;
+            height: 16px;
+            margin-top: -8px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Floating message animation */
+        .floating-message {
+            animation: slideInRight 0.3s ease;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
         @media (max-width: 768px) {
             .header h1 { font-size: 2.5rem; }
             .header .subtitle { font-size: 1.2rem; }
@@ -677,6 +748,16 @@
             .thank-you-title { font-size: 2.2rem; }
             .thank-you-subtitle { font-size: 1.1rem; }
             .thank-you-cta { flex-direction: column; align-items: center; }
+            .floating-message {
+                top: 10px;
+                right: 10px;
+                left: 10px;
+                transform: translateY(-100%);
+            }
+            
+            .floating-message.show {
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -843,7 +924,6 @@
                             <li>Conversion Rate Optimization</li>
                             <li>Bi-weekly Strategy Calls</li>
                         </ul>
-                    </div>
                     </div>
 
                     <div class="service-card">
@@ -1066,7 +1146,7 @@
                 <a href="#" target="_blank">Instagram</a>
             </div>
             
-            <p>&copy; 2025 Muhammad Saim. All rights reserved. | Transforming Businesses Through Data-Driven Marketing</p>
+            <p>© 2025 Muhammad Saim. All rights reserved. | Transforming Businesses Through Data-Driven Marketing</p>
         </div>
     </footer>
 
@@ -1077,9 +1157,7 @@
         (function(){
             emailjs.init("eufeqqpfwF4gT0vp1");
         })();
-    </script>
-    
-    <script>
+
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1094,9 +1172,11 @@
             });
         });
 
-        // Form submission handler with EmailJS integration
+        // Updated form submission handler with proper error handling
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            console.log('Form submitted'); // Debug log
             
             // Show loading state
             const submitButton = document.querySelector('.submit-button');
@@ -1108,9 +1188,65 @@
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
-            // Format the email content
-            const emailContent = `
-                New Lead from Portfolio Website
+            console.log('Form data:', data); // Debug log
+            
+            // Create email template parameters
+            const templateParams = {
+                from_name: data.name,
+                from_email: data.email,
+                company: data.company || 'Not provided',
+                revenue: data.revenue,
+                goals: data.goals,
+                budget: data.budget,
+                timeline: data.timeline,
+                message: data.message || 'No additional message provided'
+            };
+            
+            console.log('Template params:', templateParams); // Debug log
+            
+            // Function to show thank you page
+            function showThankYouPage() {
+                console.log('Showing thank you page'); // Debug log
+                
+                // Reset button
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                
+                // Hide main page and show thank you page
+                document.getElementById('main-page').style.display = 'none';
+                document.getElementById('thankYouPage').classList.add('show');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Track conversion if analytics available
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submit', {
+                        'event_category': 'engagement',
+                        'event_label': 'contact_form'
+                    });
+                }
+            }
+            
+            // Try EmailJS first, fallback to thank you page
+            if (typeof emailjs !== 'undefined') {
+                console.log('Attempting to send email via EmailJS'); // Debug log
+                
+                emailjs.send('service_l2pvpv3', 'template_z7l3w3q', templateParams)
+                    .then(function(response) {
+                        console.log('Email sent successfully:', response);
+                        showThankYouPage();
+                    })
+                    .catch(function(error) {
+                        console.log('EmailJS failed:', error);
+                        // Still show thank you page even if email fails
+                        showThankYouPage();
+                    });
+            } else {
+                console.log('EmailJS not available, showing thank you page directly'); // Debug log
+                
+                // Create mailto link as backup
+                const emailContent = `New Lead from Portfolio Website
                 
                 Name: ${data.name}
                 Email: ${data.email}
@@ -1123,134 +1259,258 @@
                 Message:
                 ${data.message || 'No additional message'}
                 
-                Submitted on: ${new Date().toLocaleString()}
-            `;
-            
-            // Try to send email using EmailJS
-            if (typeof emailjs !== 'undefined') {
-                emailjs.send('service_l2pvpv3', 'template_z7l3w3q', {
-                    from_name: data.name,
-                    from_email: data.email,
-                    company: data.company || 'Not provided',
-                    revenue: data.revenue,
-                    goals: data.goals,
-                    budget: data.budget,
-                    timeline: data.timeline,
-                    message: data.message || 'No additional message',
-                    to_email: 'saimim057@gmail.com'
-                }).then(function(response) {
-                    console.log('Email sent successfully:', response);
-                    showThankYouPage();
-                }).catch(function(error) {
-                    console.log('Email failed:', error);
-                    // Still show thank you page even if email fails
-                    showThankYouPage();
-                });
-            } else {
-                // Fallback: Use mailto link and show thank you page
+                Submitted on: ${new Date().toLocaleString()}`;
+                
                 const mailtoLink = `mailto:saimim057@gmail.com?subject=New Lead: ${encodeURIComponent(data.name)} - ${encodeURIComponent(data.goals)}&body=${encodeURIComponent(emailContent)}`;
                 
-                // Try to open email client
-                const tempLink = document.createElement('a');
-                tempLink.href = mailtoLink;
-                tempLink.click();
+                // Open email client
+                window.open(mailtoLink);
                 
                 // Show thank you page after short delay
                 setTimeout(showThankYouPage, 1000);
             }
-            
-            function showThankYouPage() {
-                // Reset button
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-                
-                // Show thank you page
-                document.getElementById('main-page').style.display = 'none';
-                document.getElementById('thankYouPage').classList.add('show');
-                
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-                // Track conversion
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'form_submit', {
-                        'event_category': 'engagement',
-                        'event_label': 'contact_form'
-                    });
-                }
-            }
         });
 
-        // Add form validation feedback
-        const requiredFields = document.querySelectorAll('input[required], select[required]');
-        requiredFields.forEach(field => {
-            field.addEventListener('blur', function() {
-                if (!this.value) {
-                    this.style.borderColor = '#ef4444';
-                } else {
-                    this.style.borderColor = '#10b981';
-                }
+        // Enhanced form validation with real-time feedback
+        const form = document.getElementById('contactForm');
+        const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+
+        inputs.forEach(input => {
+            // Real-time validation
+            input.addEventListener('input', function() {
+                validateField(this);
+            });
+            
+            input.addEventListener('blur', function() {
+                validateField(this);
             });
         });
 
-        // Add loading animation to submit button
-        const submitButton = document.querySelector('.submit-button');
-        const originalButtonText = submitButton.textContent;
-        
-        submitButton.addEventListener('click', function() {
-            if (document.getElementById('contactForm').checkValidity()) {
-                this.textContent = 'Sending Your Strategy Request...';
-                this.disabled = true;
-                
-                // Re-enable after form submission
-                setTimeout(() => {
-                    this.textContent = originalButtonText;
-                    this.disabled = false;
-                }, 2000);
-            }
-        });
-
-        // Dynamic goal selection enhancement
-        const goalsSelect = document.getElementById('goals');
-        const messageTextarea = document.getElementById('message');
-        
-        goalsSelect.addEventListener('change', function() {
-            const goalPlaceholders = {
-                'boost-sales': 'e.g., Currently generating $10K/month, want to reach $25K within 3 months through better ad targeting and conversion optimization...',
-                'reduce-ad-cost': 'e.g., Spending $5K/month with high CPCs, need help optimizing campaigns to reduce costs while maintaining lead quality...',
-                'improve-roas': 'e.g., Current ROAS is 2x, want to achieve 4x+ through better audience targeting and creative optimization...',
-                'scale-campaigns': 'e.g., Have profitable campaigns generating $20K/month, ready to scale to $50K+ with proven strategies...',
-                'generate-leads': 'e.g., Need 100+ qualified leads per month for our B2B service, current funnel converts at 2%...',
-                'brand-awareness': 'e.g., New brand launch, need to build awareness in our target market and establish credibility...',
-                'email-automation': 'e.g., Have 5K email subscribers but no automation sequences, want to increase email revenue...',
-                'multi-platform': 'e.g., Currently only using Facebook Ads, want to expand to Google Ads and improve overall strategy...'
-            };
+        function validateField(field) {
+            const isValid = field.checkValidity() && field.value.trim() !== '';
             
-            if (goalPlaceholders[this.value]) {
-                messageTextarea.placeholder = goalPlaceholders[this.value];
+            if (isValid) {
+                field.style.borderColor = '#10b981';
+                field.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.1)';
+            } else {
+                field.style.borderColor = '#ef4444';
+                field.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
+            }
+        }
+
+        // Enhanced goal selection with dynamic messaging
+        const goalSelect = document.getElementById('goals');
+        const messageField = document.getElementById('message');
+
+        const goalPrompts = {
+            'boost-sales': 'Tell me about your current sales numbers and where you want to be. What products/services are you selling? What\'s your average order value?',
+            'reduce-ad-cost': 'What platforms are you currently advertising on? What\'s your current cost per click/acquisition? What\'s eating up your budget?',
+            'improve-roas': 'What\'s your current ROAS across different platforms? What\'s your target ROAS? What challenges are you facing with conversions?',
+            'scale-campaigns': 'Which campaigns are already profitable? What\'s your current monthly ad spend? How much do you want to scale up?',
+            'generate-leads': 'How many leads do you need per month? What\'s your current cost per lead? Who is your ideal customer?',
+            'brand-awareness': 'Who is your target audience? What\'s your brand story? What makes you different from competitors?',
+            'email-automation': 'How big is your email list? What\'s your current open/click rates? What products/services do you want to promote?',
+            'multi-platform': 'Which platforms are you currently using? What\'s working and what isn\'t? What\'s your total marketing budget?'
+        };
+
+        goalSelect.addEventListener('change', function() {
+            if (goalPrompts[this.value]) {
+                messageField.placeholder = goalPrompts[this.value];
+                messageField.style.borderColor = '#3b82f6';
+                
+                // Add a subtle animation
+                messageField.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    messageField.style.transform = 'scale(1)';
+                }, 200);
             }
         });
 
-        // Function to go back to home page
+        // Add revenue field enhancement
+        const revenueSelect = document.getElementById('revenue');
+        const budgetSelect = document.getElementById('budget');
+
+        revenueSelect.addEventListener('change', function() {
+            const revenue = this.value;
+            
+            // Smart budget recommendations based on revenue
+            const budgetOptions = budgetSelect.querySelectorAll('option');
+            
+            if (revenue === '0-10k') {
+                budgetOptions.forEach(option => {
+                    if (option.value === '30k+') {
+                        option.style.display = 'none';
+                    }
+                });
+            } else if (revenue === '100k+') {
+                budgetOptions.forEach(option => {
+                    if (option.value === '1k-5k') {
+                        option.style.color = '#ef4444';
+                        option.textContent = option.textContent + ' (May be too low for your revenue)';
+                    }
+                });
+            }
+        });
+
+        // Enhanced thank you page functionality
         function goBackToHome() {
             document.getElementById('thankYouPage').classList.remove('show');
             document.getElementById('main-page').style.display = 'block';
+            
+            // Reset form
             document.getElementById('contactForm').reset();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Reset field styles
+            inputs.forEach(input => {
+                input.style.borderColor = '';
+                input.style.boxShadow = '';
+            });
+            
+            // Scroll to contact section
+            setTimeout(() => {
+                document.getElementById('contact').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
         }
 
-        // Add interaction tracking
+        // Add click tracking for all CTA buttons
         document.querySelectorAll('.cta-button, .thank-you-button').forEach(button => {
-            button.addEventListener('click', function() {
+            button.addEventListener('click', function(e) {
                 const buttonText = this.textContent.trim();
+                const buttonHref = this.getAttribute('href');
+                
+                // Track the click
+                console.log(`Button clicked: ${buttonText}`);
+                
+                // Google Analytics tracking if available
                 if (typeof gtag !== 'undefined') {
                     gtag('event', 'cta_click', {
                         'event_category': 'engagement',
-                        'event_label': buttonText
+                        'event_label': buttonText,
+                        'event_value': 1
                     });
                 }
+                
+                // Add visual feedback
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
             });
         });
+
+        // Add form progress indicator
+        const formSteps = document.querySelectorAll('#contactForm .form-group');
+        let completedSteps = 0;
+
+        function updateProgress() {
+            const totalSteps = formSteps.length;
+            completedSteps = 0;
+            
+            formSteps.forEach(step => {
+                const input = step.querySelector('input, select, textarea');
+                if (input && input.value.trim() !== '') {
+                    completedSteps++;
+                }
+            });
+            
+            const progress = (completedSteps / totalSteps) * 100;
+            
+            // Update submit button text based on progress
+            const submitBtn = document.querySelector('.submit-button');
+            if (progress === 100) {
+                submitBtn.textContent = 'Get My Custom Strategy Plan 🚀';
+                submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            } else if (progress > 50) {
+                submitBtn.textContent = `Almost Done! (${Math.round(progress)}% Complete)`;
+            } else {
+                submitBtn.textContent = 'Get My Custom Strategy Plan';
+            }
+        }
+
+        // Attach progress tracking to all form fields
+        formSteps.forEach(step => {
+            const input = step.querySelector('input, select, textarea');
+            if (input) {
+                input.addEventListener('input', updateProgress);
+                input.addEventListener('change', updateProgress);
+            }
+        });
+
+        // Initialize progress
+        updateProgress();
+
+        // Add floating success message for better UX
+        function showFloatingMessage(message, type = 'success') {
+            const existingMessage = document.querySelector('.floating-message');
+            if (existingMessage) {
+                existingMessage.remove();
+            }
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'floating-message';
+            messageDiv.textContent = message;
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#10b981' : '#ef4444'};
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                font-weight: 600;
+                z-index: 10000;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            `;
+            
+            document.body.appendChild(messageDiv);
+            
+            // Animate in
+            setTimeout(() => {
+                messageDiv.style.transform = 'translateX(0)';
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                messageDiv.style.transform = 'translateX(100%)';
+                setTimeout(() => {
+                    if (messageDiv.parentNode) {
+                        messageDiv.parentNode.removeChild(messageDiv);
+                    }
+                }, 300);
+            }, 3000);
+        }
+
+        // Add email validation enhancement
+        const emailField = document.getElementById('email');
+        emailField.addEventListener('blur', function() {
+            const email = this.value;
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            
+            if (email && !emailRegex.test(email)) {
+                this.style.borderColor = '#ef4444';
+                showFloatingMessage('Please enter a valid email address', 'error');
+            } else if (email) {
+                this.style.borderColor = '#10b981';
+            }
+        });
+
+        // Debug function to test thank you page
+        function testThankYouPage() {
+            document.getElementById('main-page').style.display = 'none';
+            document.getElementById('thankYouPage').classList.add('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add to global scope for debugging
+        window.testThankYouPage = testThankYouPage;
+        window.goBackToHome = goBackToHome;
+
+        console.log('Enhanced form scripts loaded successfully');
     </script>
 </body>
 </html>
