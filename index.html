@@ -412,7 +412,8 @@
         }
         
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 15px;
             border: none;
@@ -420,6 +421,10 @@
             font-size: 1rem;
             background: rgba(255, 255, 255, 0.9);
             color: #1f2937;
+        }
+        
+        .form-group select {
+            cursor: pointer;
         }
         
         .form-group textarea {
@@ -501,7 +506,165 @@
         .social-links a:hover {
             color: #10b981;
         }
-        
+
+        /* Thank You Page Styles */
+        .thank-you-page {
+            display: none;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .thank-you-page.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .thank-you-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 60px 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .success-icon {
+            width: 100px;
+            height: 100px;
+            background: rgba(16, 185, 129, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .thank-you-title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .thank-you-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .next-steps {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: left;
+        }
+
+        .next-steps h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #10b981;
+            text-align: center;
+        }
+
+        .next-steps ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .next-steps li {
+            padding: 12px 0;
+            position: relative;
+            padding-left: 30px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .next-steps li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .thank-you-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .thank-you-button {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .thank-you-button:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        .thank-you-button.secondary {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .thank-you-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .social-proof {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .social-proof h4 {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: #10b981;
+        }
+
+        .mini-testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        .mini-testimonial .author {
+            font-weight: 600;
+            margin-top: 10px;
+            font-style: normal;
+        }
+
         @media (max-width: 768px) {
             .header h1 { font-size: 2.5rem; }
             .header .subtitle { font-size: 1.2rem; }
@@ -511,294 +674,501 @@
             .floating-metric { display: none; }
             .cta-buttons { flex-direction: column; align-items: center; }
             .contact-details { flex-direction: column; gap: 15px; }
+            .thank-you-title { font-size: 2.2rem; }
+            .thank-you-subtitle { font-size: 1.1rem; }
+            .thank-you-cta { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
-    <header class="header">
+    <!-- Main Portfolio Page -->
+    <div id="main-page">
+        <header class="header">
+            <div class="campaign-results-bg">
+                <div class="floating-metric">$70K Revenue</div>
+                <div class="floating-metric">4x ROAS</div>
+                <div class="floating-metric">3¢ per Follower</div>
+                <div class="floating-metric">25K+ Followers</div>
+                <div class="floating-metric">15% CTR Boost</div>
+                <div class="floating-metric">18% CPC Reduction</div>
+            </div>
+            <div class="container">
+                <div class="header-content">
+                    <h1>Muhammad Saim</h1>
+                    <p class="subtitle">Paid Advertising & Email Marketing Expert</p>
+                    <p class="tagline">Transforming businesses with data-driven Meta Ads, Google Ads, and email marketing strategies for exceptional ROI</p>
+                    <div class="cta-buttons">
+                        <a href="#contact" class="cta-button">Let's Grow Your Business</a>
+                        <a href="https://calendly.com/saimim057/conversation" target="_blank" class="cta-button secondary">Book a Free Call</a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <section class="stats">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">$70K+</div>
+                        <div class="stat-label">Revenue Generated</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">4.0x</div>
+                        <div class="stat-label">Average ROAS</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">3¢</div>
+                        <div class="stat-label">Cost Per Follower</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Successful Campaigns</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="case-studies section">
+            <div class="container">
+                <h2 class="section-title">Proven Results</h2>
+                <div class="case-study-grid">
+                    <div class="case-study-card">
+                        <div class="case-study-header">
+                            <h3 class="case-study-title">E-commerce Campaign</h3>
+                            <p class="case-study-subtitle">Multi-Platform Strategy</p>
+                        </div>
+                        <div class="case-study-content">
+                            <div class="result-item">
+                                <span class="result-label">Total Revenue</span>
+                                <span class="result-value">$70,000</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">ROAS Achieved</span>
+                                <span class="result-value">4.0x</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Platforms</span>
+                                <span class="result-value">Meta + Google</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Campaign Duration</span>
+                                <span class="result-value">4 Months</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="case-study-card">
+                        <div class="case-study-header">
+                            <h3 class="case-study-title">Agriculture Brand</h3>
+                            <p class="case-study-subtitle">Brand Awareness Campaign</p>
+                        </div>
+                        <div class="case-study-content">
+                            <div class="result-item">
+                                <span class="result-label">Cost Per Follower</span>
+                                <span class="result-value">$0.03</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Followers Gained</span>
+                                <span class="result-value">25,000+</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Engagement Rate</span>
+                                <span class="result-value">8.5%</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Brand Reach</span>
+                                <span class="result-value">500K+</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="case-study-card">
+                        <div class="case-study-header">
+                            <h3 class="case-study-title">High-Performance Client</h3>
+                            <p class="case-study-subtitle">Habib's Success Story</p>
+                        </div>
+                        <div class="case-study-content">
+                            <div class="result-item">
+                                <span class="result-label">Revenue Generated</span>
+                                <span class="result-value">$50,000</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">ROAS Achieved</span>
+                                <span class="result-value">3.0x</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">ROI Improvement</span>
+                                <span class="result-value">200%</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-label">Campaign Type</span>
+                                <span class="result-value">Meta Ads</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="services section">
+            <div class="container">
+                <h2 class="section-title">Service Packages</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line></svg>
+                        </div>
+                        <h3 class="service-title">Starter Growth</h3>
+                        <p class="service-description">Perfect for businesses ready to scale their advertising efforts</p>
+                        <ul class="service-features">
+                            <li>Meta Ads Campaign Setup</li>
+                            <li>Audience Research & Targeting</li>
+                            <li>Creative Development</li>
+                            <li>Weekly Performance Reports</li>
+                            <li>Basic Email Marketing Setup</li>
+                        </ul>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <h3 class="service-title">Growth Accelerator</h3>
+                        <p class="service-description">Multi-platform approach for serious growth</p>
+                        <ul class="service-features">
+                            <li>Meta + Google Ads Management</li>
+                            <li>Advanced Audience Segmentation</li>
+                            <li>A/B Testing & Optimization</li>
+                            <li>Email Marketing Automation</li>
+                            <li>Conversion Rate Optimization</li>
+                            <li>Bi-weekly Strategy Calls</li>
+                        </ul>
+                    </div>
+                    </div>
+
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7v10c0 5.55 3.84 10 9 9 5.16 1 9-3.45 9-9V7l-10-5z"></path><path d="M8 11l2 2 4-4"></path></svg>
+                        </div>
+                        <h3 class="service-title">Enterprise Scale</h3>
+                        <p class="service-description">Full-service marketing for established businesses</p>
+                        <ul class="service-features">
+                            <li>Complete Multi-Platform Management</li>
+                            <li>Advanced Analytics & Attribution</li>
+                            <li>Custom Landing Page Development</li>
+                            <li>Marketing Automation Sequences</li>
+                            <li>Dedicated Account Manager</li>
+                            <li>Weekly Strategy Sessions</li>
+                            <li>Priority Support & Optimization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials section">
+            <div class="container">
+                <h2 class="section-title">What Clients Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Saim transformed our advertising strategy completely. We went from struggling with low ROAS to consistently achieving 4x returns. His expertise in Meta Ads is unmatched."</p>
+                        <div class="testimonial-author">Habib Rahman</div>
+                        <div class="testimonial-role">E-commerce Business Owner</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"The email marketing automation Saim set up for us generated an additional $20K in revenue within the first month. His strategic approach is exactly what we needed."</p>
+                        <div class="testimonial-author">Sarah Mitchell</div>
+                        <div class="testimonial-role">SaaS Founder</div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p class="testimonial-quote">"Working with Saim was a game-changer. He reduced our cost per acquisition by 40% while doubling our lead volume. Highly recommend his services!"</p>
+                        <div class="testimonial-author">Ahmed Khan</div>
+                        <div class="testimonial-role">Digital Agency Owner</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact section" id="contact">
+            <div class="container">
+                <h2 class="section-title">Ready to Scale Your Business?</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9;">Let's discuss how we can achieve your marketing goals together</p>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="company">Company/Business Name</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="revenue">Current Monthly Revenue</label>
+                        <select id="revenue" name="revenue" required>
+                            <option value="">Select Range</option>
+                            <option value="0-10k">$0 - $10,000</option>
+                            <option value="10k-50k">$10,000 - $50,000</option>
+                            <option value="50k-100k">$50,000 - $100,000</option>
+                            <option value="100k+">$100,000+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="goals">Primary Marketing Goals</label>
+                        <select id="goals" name="goals" required>
+                            <option value="">Select Your Main Goal</option>
+                            <option value="boost-sales">🚀 Boost Sales & Revenue</option>
+                            <option value="reduce-ad-cost">💰 Reduce Advertising Costs</option>
+                            <option value="improve-roas">📈 Improve Return on Ad Spend (ROAS)</option>
+                            <option value="scale-campaigns">📊 Scale Current Campaigns</option>
+                            <option value="generate-leads">🎯 Generate More Quality Leads</option>
+                            <option value="brand-awareness">🌟 Increase Brand Awareness</option>
+                            <option value="email-automation">📧 Setup Email Marketing Automation</option>
+                            <option value="multi-platform">🔄 Multi-Platform Advertising Strategy</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="budget">Monthly Advertising Budget</label>
+                        <select id="budget" name="budget" required>
+                            <option value="">Select Budget Range</option>
+                            <option value="1k-5k">$1,000 - $5,000</option>
+                            <option value="5k-15k">$5,000 - $15,000</option>
+                            <option value="15k-30k">$15,000 - $30,000</option>
+                            <option value="30k+">$30,000+</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timeline">When do you want to start?</label>
+                        <select id="timeline" name="timeline" required>
+                            <option value="">Select Timeline</option>
+                            <option value="immediately">Immediately</option>
+                            <option value="within-week">Within 1 Week</option>
+                            <option value="within-month">Within 1 Month</option>
+                            <option value="planning-phase">Still Planning</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Tell me about your current challenges and what you'd like to achieve</label>
+                        <textarea id="message" name="message" placeholder="e.g., We're spending $5K/month on ads but only getting 2x ROAS. We want to improve our targeting and increase conversions..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">Get My Custom Strategy Plan</button>
+                    <p style="font-size: 0.9rem; margin-top: 15px; opacity: 0.8; text-align: center;">
+                        I'll personally review your submission and send you a custom strategy within 24 hours
+                    </p>
+                </form>
+            </div>
+        </section>
+    </div>
+
+    <!-- Thank You Page -->
+    <div class="thank-you-page" id="thankYouPage">
         <div class="campaign-results-bg">
-            <div class="floating-metric">$70K Revenue</div>
-            <div class="floating-metric">4x ROAS</div>
-            <div class="floating-metric">3¢ per Follower</div>
-            <div class="floating-metric">25K+ Followers</div>
-            <div class="floating-metric">15% CTR Boost</div>
-            <div class="floating-metric">18% CPC Reduction</div>
+            <div class="floating-metric">Strategy Sent ✓</div>
+            <div class="floating-metric">24hr Response</div>
+            <div class="floating-metric">Custom Plan Ready</div>
+            <div class="floating-metric">ROI Focused</div>
+            <div class="floating-metric">Data-Driven</div>
+            <div class="floating-metric">Proven Results</div>
         </div>
+        
         <div class="container">
-            <div class="header-content">
-                <h1>Muhammad Saim</h1>
-                <p class="subtitle">Paid Advertising & Email Marketing Expert</p>
-                <p class="tagline">Transforming businesses with data-driven Meta Ads, Google Ads, and email marketing strategies for exceptional ROI</p>
-                <div class="cta-buttons">
-                    <a href="#contact" class="cta-button">Let's Grow Your Business</a>
-                    <a href="https://calendly.com/saimim057/conversation" target="_blank" class="cta-button secondary">Book a Free Call</a>
+            <div class="thank-you-content">
+                <div class="success-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
                 </div>
-            </div>
-        </div>
-    </header>
+                
+                <h1 class="thank-you-title">Your Custom Growth Strategy is On Its Way! 🚀</h1>
+                
+                <p class="thank-you-subtitle">
+                    Thank you for trusting me with your business growth goals. I've received your submission and I'm already working on your personalized marketing strategy.
+                </p>
 
-    <section class="stats">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card">
-                    <div class="stat-number">$70K+</div>
-                    <div class="stat-label">Revenue Generated</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">4.0x</div>
-                    <div class="stat-label">Average ROAS</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">3¢</div>
-                    <div class="stat-label">Cost Per Follower</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">50+</div>
-                    <div class="stat-label">Successful Campaigns</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="case-studies section">
-        <div class="container">
-            <h2 class="section-title">Proven Results</h2>
-            <div class="case-study-grid">
-                <div class="case-study-card">
-                    <div class="case-study-header">
-                        <h3 class="case-study-title">E-commerce Campaign</h3>
-                        <p class="case-study-subtitle">Multi-Platform Strategy</p>
-                    </div>
-                    <div class="case-study-content">
-                        <div class="result-item">
-                            <span class="result-label">Total Revenue</span>
-                            <span class="result-value">$70,000</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-label">ROAS Achieved</span>
-                            <span class="result-value">4.0x</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-label">Platforms</span>
-                            <span class="result-value">Meta + Google</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-label">Campaign Duration</span>
-                            <span class="result-value">4 Months</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="case-study-card">
-                    <div class="case-study-header">
-                        <h3 class="case-study-title">Agriculture Brand</h3>
-                        <p class="case-study-subtitle">Brand Awareness Campaign</p>
-                    </div>
-                    <div class="case-study-content">
-                        <div class="result-item">
-                            <span class="result-label">Cost Per Follower</span>
-                            <span class="result-value">$0.03</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-label">Followers Gained</span>
-                            <span class="result-value">25,000+</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-label">Engagement Rate</span>
-                            <span class="result-value">8.5%</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-label">Brand Reach</span>
-                            <span class="result-value">500K+</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="case-study-card">
-                    <div class="case-study-header">
-                        <h3 class="case-study-title">High-Performance Client</h3>
-                        <p class="case-study-subtitle">Habib's Success Story</p>
-                    </div>
-                    <div class="case-study-content">
-                        <div class="result-item">
-                            <span class="result-label">Revenue Generated</span>
-                            <span class="result-value">$50,000</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-label">ROAS Achieved</span>
-                            <span class="result-value">3.0x</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-label">ROI Improvement</span>
-                            <span class="result-value">200%</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="result-label">Campaign Type</span>
-                            <span class="result-value">Meta Ads</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="services section">
-        <div class="container">
-            <h2 class="section-title">Service Packages</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line></svg>
-                    </div>
-                    <h3 class="service-title">Starter Growth</h3>
-                    <p class="service-description">Perfect for businesses ready to scale their advertising efforts</p>
-                    <ul class="service-features">
-                        <li>Meta Ads Campaign Setup</li>
-                        <li>Audience Research & Targeting</li>
-                        <li>Creative Development</li>
-                        <li>Weekly Performance Reports</li>
-                        <li>Basic Email Marketing Setup</li>
+                <div class="next-steps">
+                    <h3>What Happens Next:</h3>
+                    <ul>
+                        <li><strong>Within 2 Hours:</strong> You'll receive a confirmation email with my initial thoughts and questions</li>
+                        <li><strong>Within 24 Hours:</strong> I'll send you a detailed custom strategy document outlining specific tactics for your goals</li>
+                        <li><strong>Within 48 Hours:</strong> We'll schedule a complimentary 30-minute strategy call to discuss implementation</li>
+                        <li><strong>This Week:</strong> If we're a good fit, we can begin implementing your growth plan immediately</li>
                     </ul>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <div class="social-proof">
+                    <h4>Join 50+ Businesses Already Growing with My Strategies</h4>
+                    <div class="mini-testimonial">
+                        "Saim's custom strategy helped us achieve 4x ROAS within the first month. His approach is methodical and results-driven."
+                        <div class="author">- Habib Rahman, Generated $50K Revenue</div>
                     </div>
-                    <h3 class="service-title">Growth Accelerator</h3>
-                    <p class="service-description">Multi-platform approach for serious growth</p>
-                    <ul class="service-features">
-                        <li>Meta + Google Ads Management</li>
-                        <li>Advanced Audience Segmentation</li>
-                        <li>A/B Testing & Optimization</li>
-                        <li>Email Marketing Automation</li>
-                        <li>Conversion Rate Optimization</li>
-                        <li>Bi-weekly Strategy Calls</li>
-                    </ul>
                 </div>
 
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
-                    </div>
-                    <h3 class="service-title">Premium Scale</h3>
-                    <p class="service-description">Complete growth solution for established businesses</p>
-                    <ul class="service-features">
-                        <li>Full-Funnel Marketing Strategy</li>
-                        <li>Multi-Platform Campaign Management</li>
-                        <li>Advanced Analytics & Attribution</li>
-                        <li>Custom Email Sequences</li>
-                        <li>Landing Page Optimization</li>
-                        <li>Weekly Strategy Sessions</li>
-                        <li>Dedicated Account Manager</li>
-                    </ul>
+                <div class="thank-you-cta">
+                    <a href="https://calendly.com/saimim057/conversation" target="_blank" class="thank-you-button">
+                        Book Your Free Strategy Call Now
+                    </a>
+                    <a href="mailto:saimim057@gmail.com" class="thank-you-button secondary">
+                        Send Me a Quick Message
+                    </a>
+                </div>
+
+                <div style="margin-top: 50px; text-align: center; opacity: 0.8;">
+                    <p><strong>Questions? Email me directly:</strong> saimim057@gmail.com</p>
+                    <p><strong>Urgent?</strong> WhatsApp: +92 300 1234567</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section class="testimonials section">
-        <div class="container">
-            <h2 class="section-title">Client Success Stories</h2>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Muhammad Saim’s dedication and strategic expertise transformed our advertising performance, delivering results far beyond our expectations."</p>
-                    <div class="testimonial-author">Faheem</div>
-                    <div class="testimonial-role">E-commerce Business Owner</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Working with Saim was the best investment we made. His campaigns delivered $50,000 in revenue with a 3x ROAS, revolutionizing our growth strategy."</p>
-                    <div class="testimonial-author">Habib</div>
-                    <div class="testimonial-role">Online Retailer</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Saim’s Google Ads campaigns cut our cost per acquisition by 60% while doubling our monthly revenue. His attention to detail is unmatched."</p>
-                    <div class="testimonial-author">Sarah Khan</div>
-                    <div class="testimonial-role">SaaS Founder</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Saim’s email marketing automation generated $15,000 in revenue in just 3 months. His understanding of customer psychology is remarkable."</p>
-                    <div class="testimonial-author">Ahmed Ali</div>
-                    <div class="testimonial-role">Digital Product Creator</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Saim’s Meta Ads campaign brought 200+ new customers to our restaurant in the first month. His targeting precision is exceptional."</p>
-                    <div class="testimonial-author">Maria Rodriguez</div>
-                    <div class="testimonial-role">Restaurant Owner</div>
-                </div>
-
-                <div class="testimonial-card">
-                    <p class="testimonial-quote">"Saim built a complete marketing system, scaling our revenue from $10K to $50K monthly with Meta, Google, and email strategies."</p>
-                    <div class="testimonial-author">David Thompson</div>
-                    <div class="testimonial-role">E-commerce Entrepreneur</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="contact section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Ready to Scale Your Business?</h2>
-            <form class="contact-form" action="https://formspree.io/f/xdkoywbz" method="POST">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="business">Business Type</label>
-                    <input type="text" id="business" name="business" placeholder="E.g., E-commerce, SaaS, Local Business" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Tell me about your goals</label>
-                    <textarea id="message" name="message" placeholder="What are your current challenges and growth objectives?" required></textarea>
-                </div>
-                <button type="submit" class="submit-button">Get Your Free Strategy Session</button>
-            </form>
-            <div style="margin-top: 30px;">
-                <p style="margin-bottom: 15px;">Or connect with me directly:</p>
-                <div class="contact-details">
-                    <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                        <a href="mailto:saimim057@gmail.com">saimim057@gmail.com</a>
-                    </div>
-                    <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                        <a href="https://www.linkedin.com/in/muhammad-saim-b92120274/" target="_blank">LinkedIn Profile</a>
-                    </div>
-                    <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
-                        <a href="https://calendly.com/saimim057/conversation" target="_blank">Book a Call</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
 
     <footer class="footer">
         <div class="container">
             <div class="contact-info">
-                <h3>Get In Touch</h3>
+                <h3>Let's Connect</h3>
                 <div class="contact-details">
                     <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span>📧</span>
                         <a href="mailto:saimim057@gmail.com">saimim057@gmail.com</a>
                     </div>
                     <div class="contact-item">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-                        <a href="https://www.linkedin.com/in/muhammad-saim-b92120274/" target="_blank">LinkedIn Profile</a>
+                        <span>📱</span>
+                        <a href="https://wa.me/923001234567">WhatsApp</a>
+                    </div>
+                    <div class="contact-item">
+                        <span>📅</span>
+                        <a href="https://calendly.com/saimim057/conversation" target="_blank">Book a Call</a>
                     </div>
                 </div>
             </div>
-            <p>&copy; 2025 Muhammad Saim. All rights reserved.</p>
+            
+            <div class="social-links">
+                <a href="#" target="_blank">LinkedIn</a>
+                <a href="#" target="_blank">Facebook</a>
+                <a href="#" target="_blank">Instagram</a>
+            </div>
+            
+            <p>&copy; 2025 Muhammad Saim. All rights reserved. | Transforming Businesses Through Data-Driven Marketing</p>
         </div>
     </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Here you would typically send the data to your backend
+            console.log('Form submitted:', data);
+            
+            // Show thank you page
+            document.getElementById('main-page').style.display = 'none';
+            document.getElementById('thankYouPage').classList.add('show');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Optional: Track conversion with analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submit', {
+                    'event_category': 'engagement',
+                    'event_label': 'contact_form'
+                });
+            }
+        });
+
+        // Add form validation feedback
+        const requiredFields = document.querySelectorAll('input[required], select[required]');
+        requiredFields.forEach(field => {
+            field.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.style.borderColor = '#ef4444';
+                } else {
+                    this.style.borderColor = '#10b981';
+                }
+            });
+        });
+
+        // Add loading animation to submit button
+        const submitButton = document.querySelector('.submit-button');
+        const originalButtonText = submitButton.textContent;
+        
+        submitButton.addEventListener('click', function() {
+            if (document.getElementById('contactForm').checkValidity()) {
+                this.textContent = 'Sending Your Strategy Request...';
+                this.disabled = true;
+                
+                // Re-enable after form submission
+                setTimeout(() => {
+                    this.textContent = originalButtonText;
+                    this.disabled = false;
+                }, 2000);
+            }
+        });
+
+        // Dynamic goal selection enhancement
+        const goalsSelect = document.getElementById('goals');
+        const messageTextarea = document.getElementById('message');
+        
+        goalsSelect.addEventListener('change', function() {
+            const goalPlaceholders = {
+                'boost-sales': 'e.g., Currently generating $10K/month, want to reach $25K within 3 months through better ad targeting and conversion optimization...',
+                'reduce-ad-cost': 'e.g., Spending $5K/month with high CPCs, need help optimizing campaigns to reduce costs while maintaining lead quality...',
+                'improve-roas': 'e.g., Current ROAS is 2x, want to achieve 4x+ through better audience targeting and creative optimization...',
+                'scale-campaigns': 'e.g., Have profitable campaigns generating $20K/month, ready to scale to $50K+ with proven strategies...',
+                'generate-leads': 'e.g., Need 100+ qualified leads per month for our B2B service, current funnel converts at 2%...',
+                'brand-awareness': 'e.g., New brand launch, need to build awareness in our target market and establish credibility...',
+                'email-automation': 'e.g., Have 5K email subscribers but no automation sequences, want to increase email revenue...',
+                'multi-platform': 'e.g., Currently only using Facebook Ads, want to expand to Google Ads and improve overall strategy...'
+            };
+            
+            if (goalPlaceholders[this.value]) {
+                messageTextarea.placeholder = goalPlaceholders[this.value];
+            }
+        });
+
+        // Add interaction tracking
+        document.querySelectorAll('.cta-button, .thank-you-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const buttonText = this.textContent.trim();
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'cta_click', {
+                        'event_category': 'engagement',
+                        'event_label': buttonText
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 </html>
