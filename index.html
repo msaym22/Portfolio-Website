@@ -916,9 +916,7 @@
                         <label for="revenue">Current Monthly Revenue</label>
                         <select id="revenue" name="revenue" required>
                             <option value="">Select Range</option>
-                            <option value="0-10k">$0 - $1,000</option>
-                            <option value="0-10k">$1,000 - $5,000</option>
-                            <option value="0-10k">$5,000 - $10,000</option>
+                            <option value="0-10k">$0 - $10,000</option>
                             <option value="10k-50k">$10,000 - $50,000</option>
                             <option value="50k-100k">$50,000 - $100,000</option>
                             <option value="100k+">$100,000+</option>
@@ -1027,6 +1025,9 @@
                     <a href="mailto:saimim057@gmail.com" class="thank-you-button secondary">
                         Send Me a Quick Message
                     </a>
+                    <button onclick="goBackToHome()" class="thank-you-button secondary">
+                        ← Back to Home
+                    </button>
                 </div>
 
                 <div style="margin-top: 50px; text-align: center; opacity: 0.8;">
@@ -1067,6 +1068,15 @@
         </div>
     </footer>
 
+    <!-- EmailJS CDN -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/emailjs-com/3.2.0/email.min.js"></script>
+    <script type="text/javascript">
+        // Initialize EmailJS with your public key
+        (function(){
+            emailjs.init("eufeqqpfwF4gT0vp1");
+        })();
+    </script>
+    
     <script>
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1082,30 +1092,90 @@
             });
         });
 
-        // Form submission handler
+        // Form submission handler with EmailJS integration
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Show loading state
+            const submitButton = document.querySelector('.submit-button');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending Your Strategy Request...';
+            submitButton.disabled = true;
             
             // Get form data
             const formData = new FormData(this);
             const data = Object.fromEntries(formData);
             
-            // Here you would typically send the data to your backend
-            console.log('Form submitted:', data);
+            // Format the email content
+            const emailContent = `
+                New Lead from Portfolio Website
+                
+                Name: ${data.name}
+                Email: ${data.email}
+                Company: ${data.company || 'Not provided'}
+                Monthly Revenue: ${data.revenue}
+                Primary Goal: ${data.goals}
+                Monthly Budget: ${data.budget}
+                Timeline: ${data.timeline}
+                
+                Message:
+                ${data.message || 'No additional message'}
+                
+                Submitted on: ${new Date().toLocaleString()}
+            `;
             
-            // Show thank you page
-            document.getElementById('main-page').style.display = 'none';
-            document.getElementById('thankYouPage').classList.add('show');
-            
-            // Scroll to top
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            
-            // Optional: Track conversion with analytics
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'form_submit', {
-                    'event_category': 'engagement',
-                    'event_label': 'contact_form'
+            // Try to send email using EmailJS
+            if (typeof emailjs !== 'undefined') {
+                emailjs.send('service_l2pvpv3', 'template_z7l3w3q', {
+                    from_name: data.name,
+                    from_email: data.email,
+                    company: data.company || 'Not provided',
+                    revenue: data.revenue,
+                    goals: data.goals,
+                    budget: data.budget,
+                    timeline: data.timeline,
+                    message: data.message || 'No additional message',
+                    to_email: 'saimim057@gmail.com'
+                }).then(function(response) {
+                    console.log('Email sent successfully:', response);
+                    showThankYouPage();
+                }).catch(function(error) {
+                    console.log('Email failed:', error);
+                    // Still show thank you page even if email fails
+                    showThankYouPage();
                 });
+            } else {
+                // Fallback: Use mailto link and show thank you page
+                const mailtoLink = `mailto:saimim057@gmail.com?subject=New Lead: ${encodeURIComponent(data.name)} - ${encodeURIComponent(data.goals)}&body=${encodeURIComponent(emailContent)}`;
+                
+                // Try to open email client
+                const tempLink = document.createElement('a');
+                tempLink.href = mailtoLink;
+                tempLink.click();
+                
+                // Show thank you page after short delay
+                setTimeout(showThankYouPage, 1000);
+            }
+            
+            function showThankYouPage() {
+                // Reset button
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                
+                // Show thank you page
+                document.getElementById('main-page').style.display = 'none';
+                document.getElementById('thankYouPage').classList.add('show');
+                
+                // Scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Track conversion
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'form_submit', {
+                        'event_category': 'engagement',
+                        'event_label': 'contact_form'
+                    });
+                }
             }
         });
 
@@ -1158,6 +1228,14 @@
                 messageTextarea.placeholder = goalPlaceholders[this.value];
             }
         });
+
+        // Function to go back to home page
+        function goBackToHome() {
+            document.getElementById('thankYouPage').classList.remove('show');
+            document.getElementById('main-page').style.display = 'block';
+            document.getElementById('contactForm').reset();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
 
         // Add interaction tracking
         document.querySelectorAll('.cta-button, .thank-you-button').forEach(button => {
