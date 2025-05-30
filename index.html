@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Saim - Paid Advertising & Email Marketing Expert</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .campaign-results-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .floating-metric {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 15px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-metric:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+        .floating-metric:nth-child(2) { top: 25%; right: 15%; animation-delay: 1s; }
+        .floating-metric:nth-child(3) { top: 45%; left: 5%; animation-delay: 2s; }
+        .floating-metric:nth-child(4) { top: 35%; right: 10%; animation-delay: 3s; }
+        .floating-metric:nth-child(5) { bottom: 30%; left: 15%; animation-delay: 4s; }
+        .floating-metric:nth-child(6) { bottom: 20%; right: 20%; animation-delay: 5s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .header-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+        }
+        
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .header .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+        
+        .header .tagline {
+            font-size: 1.1rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+        
+        .cta-button.secondary {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .cta-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .stats {
+            background: #f8fafc;
+            padding: 60px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #1f2937;
+        }
+        
+        .case-studies {
+            background: #ffffff;
+        }
+        
+        .case-study-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .case-study-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .case-study-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+        
+        .case-study-header {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .case-study-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .case-study-subtitle {
+            opacity: 0.9;
+            font-size: 1rem;
+        }
+        
+        .case-study-content {
+            padding: 30px;
+        }
+        
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .result-item:last-child {
+            border-bottom: none;
+        }
+        
+        .result-label {
+            color: #64748b;
+            font-weight: 500;
+        }
+        
+        .result-value {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #10b981;
+        }
+        
+        .services {
+            background: #f8fafc;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #1e40af, #10b981);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1f2937;
+        }
+        
+        .service-description {
+            color: #64748b;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+        
+        .service-features {
+            list-style: none;
+            text-align: left;
+        }
+        
+        .service-features li {
+            padding: 8px 0;
+            color: #4b5563;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+        }
+        
+        .testimonials {
+            background: #ffffff;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+        
+        .testimonial-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            border-left: 4px solid #10b981;
+        }
+        
+        .testimonial-quote {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #374151;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #1f2937;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-role {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+        
+        .contact {
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact .section-title {
+            color: white;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: #1f2937;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-button {
+            background: #10b981;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-button:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+        
+        .footer {
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #10b981;
+        }
+        
+        .contact-details {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #d1d5db;
+        }
+        
+        .contact-item a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-item a:hover {
+            color: #10b981;
+        }
+        
+        .social-links {
+            margin-bottom: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #10b981;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 { font-size: 2.5rem; }
+            .header .subtitle { font-size: 1.2rem; }
+            .section-title { font-size: 2rem; }
+            .stats-grid, .case-study-grid, .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
+            .container { padding: 0 15px; }
+            .floating-metric { display: none; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .contact-details { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="campaign-results-bg">
+            <div class="floating-metric">$70K Revenue</div>
+            <div class="floating-metric">4x ROAS</div>
+            <div class="floating-metric">3¢ per Follower</div>
+            <div class="floating-metric">25K+ Followers</div>
+            <div class="floating-metric">15% CTR Boost</div>
+            <div class="floating-metric">18% CPC Reduction</div>
+        </div>
+        <div class="container">
+            <div class="header-content">
+                <h1>Muhammad Saim</h1>
+                <p class="subtitle">Paid Advertising & Email Marketing Expert</p>
+                <p class="tagline">Transforming businesses with data-driven Meta Ads, Google Ads, and email marketing strategies for exceptional ROI</p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="cta-button">Let's Grow Your Business</a>
+                    <a href="https://calendly.com/saimim057/conversation" target="_blank" class="cta-button secondary">Book a Free Call</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">$70K+</div>
+                    <div class="stat-label">Revenue Generated</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">4.0x</div>
+                    <div class="stat-label">Average ROAS</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3¢</div>
+                    <div class="stat-label">Cost Per Follower</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Successful Campaigns</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="case-studies section">
+        <div class="container">
+            <h2 class="section-title">Proven Results</h2>
+            <div class="case-study-grid">
+                <div class="case-study-card">
+                    <div class="case-study-header">
+                        <h3 class="case-study-title">E-commerce Campaign</h3>
+                        <p class="case-study-subtitle">Multi-Platform Strategy</p>
+                    </div>
+                    <div class="case-study-content">
+                        <div class="result-item">
+                            <span class="result-label">Total Revenue</span>
+                            <span class="result-value">$70,000</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">ROAS Achieved</span>
+                            <span class="result-value">4.0x</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Platforms</span>
+                            <span class="result-value">Meta + Google</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Campaign Duration</span>
+                            <span class="result-value">4 Months</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study-card">
+                    <div class="case-study-header">
+                        <h3 class="case-study-title">Agriculture Brand</h3>
+                        <p class="case-study-subtitle">Brand Awareness Campaign</p>
+                    </div>
+                    <div class="case-study-content">
+                        <div class="result-item">
+                            <span class="result-label">Cost Per Follower</span>
+                            <span class="result-value">$0.03</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Followers Gained</span>
+                            <span class="result-value">25,000+</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Engagement Rate</span>
+                            <span class="result-value">8.5%</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Brand Reach</span>
+                            <span class="result-value">500K+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study-card">
+                    <div class="case-study-header">
+                        <h3 class="case-study-title">High-Performance Client</h3>
+                        <p class="case-study-subtitle">Habib's Success Story</p>
+                    </div>
+                    <div class="case-study-content">
+                        <div class="result-item">
+                            <span class="result-label">Revenue Generated</span>
+                            <span class="result-value">$50,000</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">ROAS Achieved</span>
+                            <span class="result-value">3.0x</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">ROI Improvement</span>
+                            <span class="result-value">200%</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="result-label">Campaign Type</span>
+                            <span class="result-value">Meta Ads</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services section">
+        <div class="container">
+            <h2 class="section-title">Service Packages</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line></svg>
+                    </div>
+                    <h3 class="service-title">Starter Growth</h3>
+                    <p class="service-description">Perfect for businesses ready to scale their advertising efforts</p>
+                    <ul class="service-features">
+                        <li>Meta Ads Campaign Setup</li>
+                        <li>Audience Research & Targeting</li>
+                        <li>Creative Development</li>
+                        <li>Weekly Performance Reports</li>
+                        <li>Basic Email Marketing Setup</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <h3 class="service-title">Growth Accelerator</h3>
+                    <p class="service-description">Multi-platform approach for serious growth</p>
+                    <ul class="service-features">
+                        <li>Meta + Google Ads Management</li>
+                        <li>Advanced Audience Segmentation</li>
+                        <li>A/B Testing & Optimization</li>
+                        <li>Email Marketing Automation</li>
+                        <li>Conversion Rate Optimization</li>
+                        <li>Bi-weekly Strategy Calls</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                    </div>
+                    <h3 class="service-title">Premium Scale</h3>
+                    <p class="service-description">Complete growth solution for established businesses</p>
+                    <ul class="service-features">
+                        <li>Full-Funnel Marketing Strategy</li>
+                        <li>Multi-Platform Campaign Management</li>
+                        <li>Advanced Analytics & Attribution</li>
+                        <li>Custom Email Sequences</li>
+                        <li>Landing Page Optimization</li>
+                        <li>Weekly Strategy Sessions</li>
+                        <li>Dedicated Account Manager</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials section">
+        <div class="container">
+            <h2 class="section-title">Client Success Stories</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Muhammad Saim’s dedication and strategic expertise transformed our advertising performance, delivering results far beyond our expectations."</p>
+                    <div class="testimonial-author">Faheem</div>
+                    <div class="testimonial-role">E-commerce Business Owner</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Working with Saim was the best investment we made. His campaigns delivered $50,000 in revenue with a 3x ROAS, revolutionizing our growth strategy."</p>
+                    <div class="testimonial-author">Habib</div>
+                    <div class="testimonial-role">Online Retailer</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Saim’s Google Ads campaigns cut our cost per acquisition by 60% while doubling our monthly revenue. His attention to detail is unmatched."</p>
+                    <div class="testimonial-author">Sarah Khan</div>
+                    <div class="testimonial-role">SaaS Founder</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Saim’s email marketing automation generated $15,000 in revenue in just 3 months. His understanding of customer psychology is remarkable."</p>
+                    <div class="testimonial-author">Ahmed Ali</div>
+                    <div class="testimonial-role">Digital Product Creator</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Saim’s Meta Ads campaign brought 200+ new customers to our restaurant in the first month. His targeting precision is exceptional."</p>
+                    <div class="testimonial-author">Maria Rodriguez</div>
+                    <div class="testimonial-role">Restaurant Owner</div>
+                </div>
+
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"Saim built a complete marketing system, scaling our revenue from $10K to $50K monthly with Meta, Google, and email strategies."</p>
+                    <div class="testimonial-author">David Thompson</div>
+                    <div class="testimonial-role">E-commerce Entrepreneur</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Ready to Scale Your Business?</h2>
+            <form class="contact-form" action="https://formspree.io/f/xdkoywbz" method="POST">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="business">Business Type</label>
+                    <input type="text" id="business" name="business" placeholder="E.g., E-commerce, SaaS, Local Business" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Tell me about your goals</label>
+                    <textarea id="message" name="message" placeholder="What are your current challenges and growth objectives?" required></textarea>
+                </div>
+                <button type="submit" class="submit-button">Get Your Free Strategy Session</button>
+            </form>
+            <div style="margin-top: 30px;">
+                <p style="margin-bottom: 15px;">Or connect with me directly:</p>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <a href="mailto:saimim057@gmail.com">saimim057@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <a href="https://www.linkedin.com/in/muhammad-saim-b92120274/" target="_blank">LinkedIn Profile</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                        <a href="https://calendly.com/saimim057/conversation" target="_blank">Book a Call</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="contact-info">
+                <h3>Get In Touch</h3>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <a href="mailto:saimim057@gmail.com">saimim057@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        <a href="https://www.linkedin.com/in/muhammad-saim-b92120274/" target="_blank">LinkedIn Profile</a>
+                    </div>
+                </div>
+            </div>
+            <p>&copy; 2025 Muhammad Saim. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
