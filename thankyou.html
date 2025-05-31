@@ -592,5 +592,41 @@
             document.querySelector('.thank-you-content').style.transform = 'translateY(0)';
         }, 100);
     </script>
+        <!-- Add this AS-IS at the bottom of thankyou.html -->
+    <script>
+// EmailJS status notification (safe add-on)
+    (function() {
+    // 1. Check ONLY for email status
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('email_status') !== 'failed') return;
+    
+    // 2. Create notification (isolated from existing styles)
+        const alert = document.createElement('div');
+        alert.innerHTML = `
+            <div class="emailjs-alert" style="
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 12px;
+                background: rgba(255,229,143,0.2);
+                border-left: 3px solid #D4A017;
+                margin-bottom: 20px;
+                font-family: inherit;
+            ">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="#D4A017">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                </svg>
+                <span>Form received! (Email notification failed)</span>
+            </div>
+        `;
+    
+    // 3. Safely insert (won't break existing layout)
+        const container = document.querySelector('[data-emailjs-alert]') 
+                       || document.querySelector('main') 
+                       || document.body;
+        container.prepend(alert.firstChild);
+    })();
+    </script>
+ 
 </body>
 </html>
