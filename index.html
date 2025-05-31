@@ -25,7 +25,6 @@
             padding: 0 20px;
         }
         
-        /* Header */
         .header {
             background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
@@ -507,235 +506,6 @@
             color: #10b981;
         }
 
-        /* Thank You Page Styles */
-        .thank-you-page {
-            display: none;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .thank-you-page.show {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .thank-you-content {
-            text-align: center;
-            max-width: 800px;
-            padding: 60px 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .success-icon {
-            width: 100px;
-            height: 100px;
-            background: rgba(16, 185, 129, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 30px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        .thank-you-title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .thank-you-subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            line-height: 1.6;
-        }
-
-        .next-steps {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-            text-align: left;
-        }
-
-        .next-steps h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #10b981;
-            text-align: center;
-        }
-
-        .next-steps ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .next-steps li {
-            padding: 12px 0;
-            position: relative;
-            padding-left: 30px;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .next-steps li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #10b981;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        .thank-you-cta {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
-        }
-
-        .thank-you-button {
-            display: inline-block;
-            background: #10b981;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-        }
-
-        .thank-you-button:hover {
-            background: #059669;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-        }
-
-        .thank-you-button.secondary {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .thank-you-button.secondary:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        .social-proof {
-            margin-top: 50px;
-            text-align: center;
-        }
-
-        .social-proof h4 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #10b981;
-        }
-
-        .mini-testimonial {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 20px 0;
-            font-style: italic;
-        }
-
-        .mini-testimonial .author {
-            font-weight: 600;
-            margin-top: 10px;
-            font-style: normal;
-        }
-
-        /* Fix for thank you page display issues */
-        .thank-you-page.show {
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Enhanced form styling */
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            transform: translateY(-1px);
-        }
-
-        /* Submit button enhanced states */
-        .submit-button {
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .submit-button:hover:not(:disabled) {
-            background: linear-gradient(135deg, #059669, #047857);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-        }
-
-        .submit-button:disabled {
-            opacity: 0.8;
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        /* Loading animation for submit button */
-        .submit-button:disabled::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            right: 15px;
-            width: 16px;
-            height: 16px;
-            margin-top: -8px;
-            border: 2px solid rgba(255,255,255,0.3);
-            border-radius: 50%;
-            border-top-color: white;
-            animation: spin 1s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        /* Floating message animation */
-        .floating-message {
-            animation: slideInRight 0.3s ease;
-        }
-
-        @keyframes slideInRight {
-            from {
-                transform: translateX(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(0);
-                opacity: 1;
-            }
-        }
-
         @media (max-width: 768px) {
             .header h1 { font-size: 2.5rem; }
             .header .subtitle { font-size: 1.2rem; }
@@ -745,24 +515,10 @@
             .floating-metric { display: none; }
             .cta-buttons { flex-direction: column; align-items: center; }
             .contact-details { flex-direction: column; gap: 15px; }
-            .thank-you-title { font-size: 2.2rem; }
-            .thank-you-subtitle { font-size: 1.1rem; }
-            .thank-you-cta { flex-direction: column; align-items: center; }
-            .floating-message {
-                top: 10px;
-                right: 10px;
-                left: 10px;
-                transform: translateY(-100%);
-            }
-            
-            .floating-message.show {
-                transform: translateY(0);
-            }
         }
     </style>
 </head>
 <body>
-    <!-- Main Portfolio Page -->
     <div id="main-page">
         <header class="header">
             <div class="campaign-results-bg">
@@ -1056,70 +812,6 @@
         </section>
     </div>
 
-    <!-- Thank You Page -->
-    <div class="thank-you-page" id="thankYouPage">
-        <div class="campaign-results-bg">
-            <div class="floating-metric">Strategy Sent ✓</div>
-            <div class="floating-metric">24hr Response</div>
-            <div class="floating-metric">Custom Plan Ready</div>
-            <div class="floating-metric">ROI Focused</div>
-            <div class="floating-metric">Data-Driven</div>
-            <div class="floating-metric">Proven Results</div>
-        </div>
-        
-        <div class="container">
-            <div class="thank-you-content">
-                <div class="success-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
-                    </svg>
-                </div>
-                
-                <h1 class="thank-you-title">Your Custom Growth Strategy is On Its Way! 🚀</h1>
-                
-                <p class="thank-you-subtitle">
-                    Thank you for trusting me with your business growth goals. I've received your submission and I'm already working on your personalized marketing strategy.
-                </p>
-
-                <div class="next-steps">
-                    <h3>What Happens Next:</h3>
-                    <ul>
-                        <li><strong>Within 2 Hours:</strong> You'll receive a confirmation email with my initial thoughts and questions</li>
-                        <li><strong>Within 24 Hours:</strong> I'll send you a detailed custom strategy document outlining specific tactics for your goals</li>
-                        <li><strong>Within 48 Hours:</strong> We'll schedule a complimentary 30-minute strategy call to discuss implementation</li>
-                        <li><strong>This Week:</strong> If we're a good fit, we can begin implementing your growth plan immediately</li>
-                    </ul>
-                </div>
-
-                <div class="social-proof">
-                    <h4>Join 50+ Businesses Already Growing with My Strategies</h4>
-                    <div class="mini-testimonial">
-                        "Saim's custom strategy helped us achieve 4x ROAS within the first month. His approach is methodical and results-driven."
-                        <div class="author">- Habib Rahman, Generated $50K Revenue</div>
-                    </div>
-                </div>
-
-                <div class="thank-you-cta">
-                    <a href="https://calendly.com/saimim057/conversation" target="_blank" class="thank-you-button">
-                        Book Your Free Strategy Call Now
-                    </a>
-                    <a href="mailto:saimim057@gmail.com" class="thank-you-button secondary">
-                        Send Me a Quick Message
-                    </a>
-                    <button onclick="goBackToHome()" class="thank-you-button secondary">
-                        ← Back to Home
-                    </button>
-                </div>
-
-                <div style="margin-top: 50px; text-align: center; opacity: 0.8;">
-                    <p><strong>Questions? Email me directly:</strong> saimim057@gmail.com</p>
-                    <p><strong>Urgent?</strong> WhatsApp: +92 300 1234567</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <footer class="footer">
         <div class="container">
             <div class="contact-info">
@@ -1150,15 +842,57 @@
         </div>
     </footer>
 
-    <!-- EmailJS CDN -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/emailjs-com/3.2.0/email.min.js"></script>
     <script type="text/javascript">
-        // Initialize EmailJS with your public key
+        const EMAILJS_CONFIG = {
+            serviceID: 'service_l2pvpv3',
+            templateID: 'template_z7l3w3q',
+            publicKey: 'eufeqqpfwF4gT0vp1'
+        };
+
         (function(){
-            emailjs.init("eufeqqpfwF4gT0vp1");
+            emailjs.init(EMAILJS_CONFIG.publicKey);
         })();
 
-        // Smooth scrolling for anchor links
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitButton = document.querySelector('.submit-button');
+            const originalText = submitButton.textContent;
+            submitButton.textContent = 'Sending Your Strategy Request...';
+            submitButton.disabled = true;
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            emailjs.send(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.templateID, {
+                from_name: data.name,
+                from_email: data.email,
+                company: data.company || 'Not provided',
+                revenue: data.revenue,
+                goals: data.goals,
+                budget: data.budget,
+                timeline: data.timeline,
+                message: data.message || 'No additional message'
+            }).then(function(response) {
+                console.log('Email sent successfully');
+                redirectToThankYou(data);
+            }).catch(function(error) {
+                console.log('Email failed, but proceeding to thank you page');
+                redirectToThankYou(data);
+            });
+            
+            function redirectToThankYou(formData) {
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+                const params = new URLSearchParams({
+                    name: formData.name,
+                    goals: formData.goals
+                });
+                window.location.href = `thankyou.html?${params.toString()}`;
+            }
+        });
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1171,346 +905,6 @@
                 }
             });
         });
-
-        // Updated form submission handler with proper error handling
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            console.log('Form submitted'); // Debug log
-            
-            // Show loading state
-            const submitButton = document.querySelector('.submit-button');
-            const originalText = submitButton.textContent;
-            submitButton.textContent = 'Sending Your Strategy Request...';
-            submitButton.disabled = true;
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            console.log('Form data:', data); // Debug log
-            
-            // Create email template parameters
-            const templateParams = {
-                from_name: data.name,
-                from_email: data.email,
-                company: data.company || 'Not provided',
-                revenue: data.revenue,
-                goals: data.goals,
-                budget: data.budget,
-                timeline: data.timeline,
-                message: data.message || 'No additional message provided'
-            };
-            
-            console.log('Template params:', templateParams); // Debug log
-            
-            // Function to show thank you page
-            function showThankYouPage() {
-                console.log('Showing thank you page'); // Debug log
-                
-                // Reset button
-                submitButton.textContent = originalText;
-                submitButton.disabled = false;
-                
-                // Hide main page and show thank you page
-                document.getElementById('main-page').style.display = 'none';
-                document.getElementById('thankYouPage').classList.add('show');
-                
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-                // Track conversion if analytics available
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'form_submit', {
-                        'event_category': 'engagement',
-                        'event_label': 'contact_form'
-                    });
-                }
-            }
-            
-            // Try EmailJS first, fallback to thank you page
-            if (typeof emailjs !== 'undefined') {
-                console.log('Attempting to send email via EmailJS'); // Debug log
-                
-                emailjs.send('service_l2pvpv3', 'template_z7l3w3q', templateParams)
-                    .then(function(response) {
-                        console.log('Email sent successfully:', response);
-                        showThankYouPage();
-                    })
-                    .catch(function(error) {
-                        console.log('EmailJS failed:', error);
-                        // Still show thank you page even if email fails
-                        showThankYouPage();
-                    });
-            } else {
-                console.log('EmailJS not available, showing thank you page directly'); // Debug log
-                
-                // Create mailto link as backup
-                const emailContent = `New Lead from Portfolio Website
-                
-                Name: ${data.name}
-                Email: ${data.email}
-                Company: ${data.company || 'Not provided'}
-                Monthly Revenue: ${data.revenue}
-                Primary Goal: ${data.goals}
-                Monthly Budget: ${data.budget}
-                Timeline: ${data.timeline}
-                
-                Message:
-                ${data.message || 'No additional message'}
-                
-                Submitted on: ${new Date().toLocaleString()}`;
-                
-                const mailtoLink = `mailto:saimim057@gmail.com?subject=New Lead: ${encodeURIComponent(data.name)} - ${encodeURIComponent(data.goals)}&body=${encodeURIComponent(emailContent)}`;
-                
-                // Open email client
-                window.open(mailtoLink);
-                
-                // Show thank you page after short delay
-                setTimeout(showThankYouPage, 1000);
-            }
-        });
-
-        // Enhanced form validation with real-time feedback
-        const form = document.getElementById('contactForm');
-        const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
-
-        inputs.forEach(input => {
-            // Real-time validation
-            input.addEventListener('input', function() {
-                validateField(this);
-            });
-            
-            input.addEventListener('blur', function() {
-                validateField(this);
-            });
-        });
-
-        function validateField(field) {
-            const isValid = field.checkValidity() && field.value.trim() !== '';
-            
-            if (isValid) {
-                field.style.borderColor = '#10b981';
-                field.style.boxShadow = '0 0 0 3px rgba(16, 185, 129, 0.1)';
-            } else {
-                field.style.borderColor = '#ef4444';
-                field.style.boxShadow = '0 0 0 3px rgba(239, 68, 68, 0.1)';
-            }
-        }
-
-        // Enhanced goal selection with dynamic messaging
-        const goalSelect = document.getElementById('goals');
-        const messageField = document.getElementById('message');
-
-        const goalPrompts = {
-            'boost-sales': 'Tell me about your current sales numbers and where you want to be. What products/services are you selling? What\'s your average order value?',
-            'reduce-ad-cost': 'What platforms are you currently advertising on? What\'s your current cost per click/acquisition? What\'s eating up your budget?',
-            'improve-roas': 'What\'s your current ROAS across different platforms? What\'s your target ROAS? What challenges are you facing with conversions?',
-            'scale-campaigns': 'Which campaigns are already profitable? What\'s your current monthly ad spend? How much do you want to scale up?',
-            'generate-leads': 'How many leads do you need per month? What\'s your current cost per lead? Who is your ideal customer?',
-            'brand-awareness': 'Who is your target audience? What\'s your brand story? What makes you different from competitors?',
-            'email-automation': 'How big is your email list? What\'s your current open/click rates? What products/services do you want to promote?',
-            'multi-platform': 'Which platforms are you currently using? What\'s working and what isn\'t? What\'s your total marketing budget?'
-        };
-
-        goalSelect.addEventListener('change', function() {
-            if (goalPrompts[this.value]) {
-                messageField.placeholder = goalPrompts[this.value];
-                messageField.style.borderColor = '#3b82f6';
-                
-                // Add a subtle animation
-                messageField.style.transform = 'scale(1.02)';
-                setTimeout(() => {
-                    messageField.style.transform = 'scale(1)';
-                }, 200);
-            }
-        });
-
-        // Add revenue field enhancement
-        const revenueSelect = document.getElementById('revenue');
-        const budgetSelect = document.getElementById('budget');
-
-        revenueSelect.addEventListener('change', function() {
-            const revenue = this.value;
-            
-            // Smart budget recommendations based on revenue
-            const budgetOptions = budgetSelect.querySelectorAll('option');
-            
-            if (revenue === '0-10k') {
-                budgetOptions.forEach(option => {
-                    if (option.value === '30k+') {
-                        option.style.display = 'none';
-                    }
-                });
-            } else if (revenue === '100k+') {
-                budgetOptions.forEach(option => {
-                    if (option.value === '1k-5k') {
-                        option.style.color = '#ef4444';
-                        option.textContent = option.textContent + ' (May be too low for your revenue)';
-                    }
-                });
-            }
-        });
-
-        // Enhanced thank you page functionality
-        function goBackToHome() {
-            document.getElementById('thankYouPage').classList.remove('show');
-            document.getElementById('main-page').style.display = 'block';
-            
-            // Reset form
-            document.getElementById('contactForm').reset();
-            
-            // Reset field styles
-            inputs.forEach(input => {
-                input.style.borderColor = '';
-                input.style.boxShadow = '';
-            });
-            
-            // Scroll to contact section
-            setTimeout(() => {
-                document.getElementById('contact').scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }, 100);
-        }
-
-        // Add click tracking for all CTA buttons
-        document.querySelectorAll('.cta-button, .thank-you-button').forEach(button => {
-            button.addEventListener('click', function(e) {
-                const buttonText = this.textContent.trim();
-                const buttonHref = this.getAttribute('href');
-                
-                // Track the click
-                console.log(`Button clicked: ${buttonText}`);
-                
-                // Google Analytics tracking if available
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'cta_click', {
-                        'event_category': 'engagement',
-                        'event_label': buttonText,
-                        'event_value': 1
-                    });
-                }
-                
-                // Add visual feedback
-                this.style.transform = 'scale(0.98)';
-                setTimeout(() => {
-                    this.style.transform = '';
-                }, 150);
-            });
-        });
-
-        // Add form progress indicator
-        const formSteps = document.querySelectorAll('#contactForm .form-group');
-        let completedSteps = 0;
-
-        function updateProgress() {
-            const totalSteps = formSteps.length;
-            completedSteps = 0;
-            
-            formSteps.forEach(step => {
-                const input = step.querySelector('input, select, textarea');
-                if (input && input.value.trim() !== '') {
-                    completedSteps++;
-                }
-            });
-            
-            const progress = (completedSteps / totalSteps) * 100;
-            
-            // Update submit button text based on progress
-            const submitBtn = document.querySelector('.submit-button');
-            if (progress === 100) {
-                submitBtn.textContent = 'Get My Custom Strategy Plan 🚀';
-                submitBtn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-            } else if (progress > 50) {
-                submitBtn.textContent = `Almost Done! (${Math.round(progress)}% Complete)`;
-            } else {
-                submitBtn.textContent = 'Get My Custom Strategy Plan';
-            }
-        }
-
-        // Attach progress tracking to all form fields
-        formSteps.forEach(step => {
-            const input = step.querySelector('input, select, textarea');
-            if (input) {
-                input.addEventListener('input', updateProgress);
-                input.addEventListener('change', updateProgress);
-            }
-        });
-
-        // Initialize progress
-        updateProgress();
-
-        // Add floating success message for better UX
-        function showFloatingMessage(message, type = 'success') {
-            const existingMessage = document.querySelector('.floating-message');
-            if (existingMessage) {
-                existingMessage.remove();
-            }
-            
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'floating-message';
-            messageDiv.textContent = message;
-            messageDiv.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background: ${type === 'success' ? '#10b981' : '#ef4444'};
-                color: white;
-                padding: 15px 25px;
-                border-radius: 10px;
-                font-weight: 600;
-                z-index: 10000;
-                box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-                transform: translateX(100%);
-                transition: transform 0.3s ease;
-            `;
-            
-            document.body.appendChild(messageDiv);
-            
-            // Animate in
-            setTimeout(() => {
-                messageDiv.style.transform = 'translateX(0)';
-            }, 100);
-            
-            // Animate out and remove
-            setTimeout(() => {
-                messageDiv.style.transform = 'translateX(100%)';
-                setTimeout(() => {
-                    if (messageDiv.parentNode) {
-                        messageDiv.parentNode.removeChild(messageDiv);
-                    }
-                }, 300);
-            }, 3000);
-        }
-
-        // Add email validation enhancement
-        const emailField = document.getElementById('email');
-        emailField.addEventListener('blur', function() {
-            const email = this.value;
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-            if (email && !emailRegex.test(email)) {
-                this.style.borderColor = '#ef4444';
-                showFloatingMessage('Please enter a valid email address', 'error');
-            } else if (email) {
-                this.style.borderColor = '#10b981';
-            }
-        });
-
-        // Debug function to test thank you page
-        function testThankYouPage() {
-            document.getElementById('main-page').style.display = 'none';
-            document.getElementById('thankYouPage').classList.add('show');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Add to global scope for debugging
-        window.testThankYouPage = testThankYouPage;
-        window.goBackToHome = goBackToHome;
-
-        console.log('Enhanced form scripts loaded successfully');
     </script>
 </body>
 </html>
