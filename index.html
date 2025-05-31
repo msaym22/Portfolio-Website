@@ -843,14 +843,20 @@
     </footer>
 
     <script type="text/javascript">
-    // 1. Initialize EmailJS with your PUBLIC KEY
-    emailjs.init('eufeqqpfwF4gT0vp1'); // Replace with your actual key
+    // 1. Initialize EmailJS
+    emailjs.init('eufeqqpfwF4gT0vp1');
     
     // 2. Form submission handler
     document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
+        const submitButton = document.querySelector('.submit-button');
+        const originalText = submitButton.textContent;
         
-        // 3. Get form data (MUST match template variables)
+        // 3. Disable button during processing
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending...';
+        
+        // 4. Prepare form data
         const templateParams = {
             from_name: document.getElementById('name').value,
             from_email: document.getElementById('email').value,
@@ -863,14 +869,21 @@
             submission_date: new Date().toLocaleString()
         };
 
-        // 4. Send email
+        // 5. Send email with PROPER redirect
         emailjs.send('service_l2pvpv3', 'template_z7l3w3q', templateParams)
             .then(function() {
-                console.log('Email sent successfully!');
+                // SUCCESS: Clean redirect without URL params
                 window.location.href = 'thankyou.html';
-            }, function(error) {
+            })
+            .catch(function(error) {
+                // FAILURE: Redirect with error state
                 console.error('Email failed:', error);
-                alert('Form submitted but email failed. We\'ll contact you shortly.');
+                window.location.href = 'thankyou.html?email_status=failed';
+            })
+            .finally(function() {
+                // Reset button state
+                submitButton.disabled = false;
+                submitButton.textContent = originalText;
             });
     });
 </script>
