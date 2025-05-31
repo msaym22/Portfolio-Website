@@ -843,95 +843,35 @@
     </footer>
 
     <script type="text/javascript">
-    // EmailJS Configuration
-    const EMAILJS_CONFIG = {
-        serviceID: 'service_l2pvpv3',    // Verify this is correct
-        templateID: 'template_z7l3w3q',   // Verify this is correct
-        publicKey: 'eufeqqpfwF4gT0vp1'    // Verify this is correct
-    };
-
-    // Initialize EmailJS with error handling
-    (function() {
-        try {
-            emailjs.init(EMAILJS_CONFIG.publicKey);
-            console.log('EmailJS initialized successfully');
-        } catch (error) {
-            console.error('EmailJS initialization failed:', error);
-        }
-    })();
-
-    // Form submission handler with enhanced error handling
-    document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    // 1. Initialize EmailJS with your PUBLIC KEY
+    emailjs.init('eufeqqpfwF4gT0vp1'); // Replace with your actual key
+    
+    // 2. Form submission handler
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        e.stopImmediatePropagation();
+        
+        // 3. Get form data (MUST match template variables)
+        const templateParams = {
+            from_name: document.getElementById('name').value,
+            from_email: document.getElementById('email').value,
+            company: document.getElementById('company').value || 'Not provided',
+            revenue: document.getElementById('revenue').value,
+            goals: document.getElementById('goals').value,
+            budget: document.getElementById('budget').value,
+            timeline: document.getElementById('timeline').value,
+            message: document.getElementById('message').value || 'No message',
+            submission_date: new Date().toLocaleString()
+        };
 
-        const submitButton = document.querySelector('.submit-button');
-        const originalText = submitButton.textContent;
-        submitButton.textContent = 'Sending...';
-        submitButton.disabled = true;
-
-        try {
-            // Get form data
-            const formData = new FormData(this);
-            const data = {
-                from_name: formData.get('name'),
-                from_email: formData.get('email'),
-                company: formData.get('company') || 'Not provided',
-                revenue: formData.get('revenue'),
-                goals: formData.get('goals'),
-                budget: formData.get('budget'),
-                timeline: formData.get('timeline'),
-                message: formData.get('message') || 'No additional message',
-                submission_date: new Date().toLocaleString()
-            };
-
-            // Debug: Log the data being sent
-            console.log('Submitting form data:', data);
-
-            // Send email via EmailJS
-            const emailResponse = await emailjs.send(
-                EMAILJS_CONFIG.serviceID,
-                EMAILJS_CONFIG.templateID,
-                data
-            );
-            
-            console.log('EmailJS response:', emailResponse);
-            
-            // Redirect to thank you page with parameters
-            const params = new URLSearchParams({
-                name: encodeURIComponent(data.from_name),
-                email: encodeURIComponent(data.from_email),
-                goals: encodeURIComponent(data.goals)
+        // 4. Send email
+        emailjs.send('service_l2pvpv3', 'template_z7l3w3q', templateParams)
+            .then(function() {
+                console.log('Email sent successfully!');
+                window.location.href = 'thankyou.html';
+            }, function(error) {
+                console.error('Email failed:', error);
+                alert('Form submitted but email failed. We\'ll contact you shortly.');
             });
-            
-            window.location.href = `thankyou.html?${params.toString()}`;
-            
-        } catch (error) {
-            console.error('Form submission failed:', error);
-            
-            // Fallback: Try to redirect even if email fails
-            try {
-                window.location.href = 'thankyou.html?status=email_failed';
-            } catch (redirectError) {
-                console.error('Redirect failed:', redirectError);
-                alert('Form submitted but we encountered an error. We will contact you shortly.');
-            }
-            
-        } finally {
-            submitButton.textContent = originalText;
-            submitButton.disabled = false;
-        }
-    });
-
-    // Smooth scrolling for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
     });
 </script>
 </body>
