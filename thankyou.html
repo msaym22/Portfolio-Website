@@ -571,6 +571,20 @@
                 }
             });
         });
+            // In thankyou.html
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.has('status') && params.get('status') === 'email_failed') {
+        // Store form data in localStorage to process later
+                const formData = JSON.parse(localStorage.getItem('failedSubmission'));
+                if (formData) {
+                    console.log('Failed submission data:', formData);
+            // Here you could implement another way to notify yourself
+                }
+            }
+        });
+
+       
         
         // Add entrance animation
         setTimeout(() => {
