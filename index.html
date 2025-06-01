@@ -11,20 +11,17 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: #1f2937;
             background-color: #ffffff;
         }
-        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
         .header {
             background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
@@ -36,7 +33,6 @@
             display: flex;
             align-items: center;
         }
-        
         .header::before {
             content: '';
             position: absolute;
@@ -47,7 +43,6 @@
             background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
             opacity: 0.3;
         }
-        
         .campaign-results-bg {
             position: absolute;
             top: 0;
@@ -58,7 +53,6 @@
             z-index: 0;
             overflow: hidden;
         }
-        
         .floating-metric {
             position: absolute;
             background: rgba(255, 255, 255, 0.1);
@@ -70,39 +64,27 @@
             font-weight: 600;
             animation: float 6s ease-in-out infinite;
         }
-        
-        .floating-metric:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
-        .floating-metric:nth-child(2) { top: 25%; right: 15%; animation-delay: 1s; }
-        .floating-metric:nth-child(3) { top: 45%; left: 5%; animation-delay: 2s; }
-        .floating-metric:nth-child(4) { top: 35%; right: 10%; animation-delay: 3s; }
-        .floating-metric:nth-child(5) { bottom: 30%; left: 15%; animation-delay: 4s; }
-        .floating-metric:nth-child(6) { bottom: 20%; right: 20%; animation-delay: 5s; }
-        
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
             50% { transform: translateY(-20px); }
         }
-        
         .header-content {
             position: relative;
             z-index: 1;
             width: 100%;
         }
-        
         .header h1 {
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
         }
-        
         .header .subtitle {
             font-size: 1.5rem;
             margin-bottom: 2rem;
             opacity: 0.9;
             font-weight: 400;
         }
-        
         .header .tagline {
             font-size: 1.1rem;
             margin-bottom: 2.5rem;
@@ -111,14 +93,12 @@
             margin-left: auto;
             margin-right: auto;
         }
-        
         .cta-buttons {
             display: flex;
             gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
-        
         .cta-button {
             display: inline-block;
             background: #10b981;
@@ -131,35 +111,29 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
         }
-        
         .cta-button:hover {
             background: #059669;
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
         }
-        
         .cta-button.secondary {
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
-        
         .cta-button.secondary:hover {
             background: rgba(255, 255, 255, 0.3);
         }
-        
         .stats {
             background: #f8fafc;
             padding: 60px 0;
         }
-        
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 40px;
             text-align: center;
         }
-        
         .stat-card {
             background: white;
             padding: 40px 30px;
@@ -167,28 +141,23 @@
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             transition: transform 0.3s ease;
         }
-        
         .stat-card:hover {
             transform: translateY(-5px);
         }
-        
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
             color: #1e40af;
             margin-bottom: 10px;
         }
-        
         .stat-label {
             font-size: 1.1rem;
             color: #64748b;
             font-weight: 500;
         }
-        
         .section {
             padding: 80px 0;
         }
-        
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
@@ -196,17 +165,14 @@
             margin-bottom: 60px;
             color: #1f2937;
         }
-        
         .case-studies {
             background: #ffffff;
         }
-        
         .case-study-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
         }
-        
         .case-study-card {
             background: white;
             border-radius: 20px;
@@ -215,34 +181,28 @@
             transition: all 0.3s ease;
             border: 1px solid #e2e8f0;
         }
-        
         .case-study-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
-        
         .case-study-header {
             background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
             padding: 30px;
             text-align: center;
         }
-        
         .case-study-title {
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 10px;
         }
-        
         .case-study-subtitle {
             opacity: 0.9;
             font-size: 1rem;
         }
-        
         .case-study-content {
             padding: 30px;
         }
-        
         .result-item {
             display: flex;
             justify-content: space-between;
@@ -250,32 +210,26 @@
             padding: 15px 0;
             border-bottom: 1px solid #e2e8f0;
         }
-        
         .result-item:last-child {
             border-bottom: none;
         }
-        
         .result-label {
             color: #64748b;
             font-weight: 500;
         }
-        
         .result-value {
             font-weight: 700;
             font-size: 1.2rem;
             color: #10b981;
         }
-        
         .services {
             background: #f8fafc;
         }
-        
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
         }
-        
         .service-card {
             background: white;
             padding: 40px 30px;
@@ -286,7 +240,6 @@
             position: relative;
             overflow: hidden;
         }
-        
         .service-card::before {
             content: '';
             position: absolute;
@@ -296,11 +249,9 @@
             height: 4px;
             background: linear-gradient(90deg, #1e40af, #10b981);
         }
-        
         .service-card:hover {
             transform: translateY(-5px);
         }
-        
         .service-icon {
             width: 60px;
             height: 60px;
@@ -311,32 +262,27 @@
             justify-content: center;
             margin: 0 auto 20px;
         }
-        
         .service-title {
             font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 15px;
             color: #1f2937;
         }
-        
         .service-description {
             color: #64748b;
             margin-bottom: 20px;
             line-height: 1.6;
         }
-        
         .service-features {
             list-style: none;
             text-align: left;
         }
-        
         .service-features li {
             padding: 8px 0;
             color: #4b5563;
             position: relative;
             padding-left: 25px;
         }
-        
         .service-features li::before {
             content: '✓';
             position: absolute;
@@ -344,17 +290,14 @@
             color: #10b981;
             font-weight: bold;
         }
-        
         .testimonials {
             background: #ffffff;
         }
-        
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 40px;
         }
-        
         .testimonial-card {
             background: white;
             padding: 40px;
@@ -363,7 +306,6 @@
             position: relative;
             border-left: 4px solid #10b981;
         }
-        
         .testimonial-quote {
             font-size: 1.1rem;
             line-height: 1.7;
@@ -371,45 +313,37 @@
             margin-bottom: 25px;
             font-style: italic;
         }
-        
         .testimonial-author {
             font-weight: 600;
             color: #1f2937;
             font-size: 1.1rem;
         }
-        
         .testimonial-role {
             color: #64748b;
             font-size: 0.95rem;
             margin-top: 5px;
         }
-        
         .contact {
             background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
             color: white;
             text-align: center;
         }
-        
         .contact .section-title {
             color: white;
         }
-        
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
         }
-        
         .form-group {
             margin-bottom: 25px;
             text-align: left;
         }
-        
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
         }
-        
         .form-group input,
         .form-group textarea,
         .form-group select {
@@ -421,16 +355,13 @@
             background: rgba(255, 255, 255, 0.9);
             color: #1f2937;
         }
-        
         .form-group select {
             cursor: pointer;
         }
-        
         .form-group textarea {
             height: 120px;
             resize: vertical;
         }
-        
         .submit-button {
             background: #10b981;
             color: white;
@@ -442,29 +373,24 @@
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
         .submit-button:hover {
             background: #059669;
             transform: translateY(-2px);
         }
-        
         .footer {
             background: #1f2937;
             color: white;
             text-align: center;
             padding: 40px 0;
         }
-        
         .contact-info {
             margin-bottom: 30px;
         }
-        
         .contact-info h3 {
             font-size: 1.2rem;
             margin-bottom: 15px;
             color: #10b981;
         }
-        
         .contact-details {
             display: flex;
             justify-content: center;
@@ -472,28 +398,23 @@
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
-        
         .contact-item {
             display: flex;
             align-items: center;
             gap: 8px;
             color: #d1d5db;
         }
-        
         .contact-item a {
             color: #d1d5db;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
         .contact-item a:hover {
             color: #10b981;
         }
-        
         .social-links {
             margin-bottom: 20px;
         }
-        
         .social-links a {
             color: white;
             text-decoration: none;
@@ -501,11 +422,9 @@
             font-size: 1.5rem;
             transition: color 0.3s ease;
         }
-        
         .social-links a:hover {
             color: #10b981;
         }
-
         @media (max-width: 768px) {
             .header h1 { font-size: 2.5rem; }
             .header .subtitle { font-size: 1.2rem; }
@@ -823,7 +742,7 @@
                     </div>
                     <div class="contact-item">
                         <span>📱</span>
-                        <a href="https://wa.me/923001171059">WhatsApp</a>
+                        <a href="https://wa.me/923001234567">WhatsApp</a>
                     </div>
                     <div class="contact-item">
                         <span>📅</span>
@@ -833,7 +752,7 @@
             </div>
             
             <div class="social-links">
-                <a href="#" target="https://www.linkedin.com/in/muhammad-saim-b92120274/">LinkedIn</a>
+                <a href="#" target="_blank">LinkedIn</a>
                 <a href="#" target="_blank">Facebook</a>
                 <a href="#" target="_blank">Instagram</a>
             </div>
@@ -842,50 +761,40 @@
         </div>
     </footer>
 
-    <script type="text/javascript">
-    // 1. Initialize EmailJS
-    emailjs.init('eufeqqpfwF4gT0vp1');
-    
-    // 2. Form submission handler
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const submitButton = document.querySelector('.submit-button');
-        const originalText = submitButton.textContent;
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        emailjs.init('eufeqqpfwF4gT0vp1');
         
-        // 3. Disable button during processing
-        submitButton.disabled = true;
-        submitButton.textContent = 'Sending...';
-        
-        // 4. Prepare form data
-        const templateParams = {
-            from_name: document.getElementById('name').value,
-            from_email: document.getElementById('email').value,
-            company: document.getElementById('company').value || 'Not provided',
-            revenue: document.getElementById('revenue').value,
-            goals: document.getElementById('goals').value,
-            budget: document.getElementById('budget').value,
-            timeline: document.getElementById('timeline').value,
-            message: document.getElementById('message').value || 'No message',
-            submission_date: new Date().toLocaleString()
-        };
-
-        // 5. Send email with PROPER redirect
-        emailjs.send('service_l2pvpv3', 'template_z7l3w3q', templateParams)
-            .then(function() {
-                // SUCCESS: Clean redirect without URL params
-                window.location.href = 'thankyou.html';
-            })
-            .catch(function(error) {
-                // FAILURE: Redirect with error state
-                console.error('Email failed:', error);
-                window.location.href = 'thankyou.html?email_status=failed';
-            })
-            .finally(function() {
-                // Reset button state
-                submitButton.disabled = false;
-                submitButton.textContent = originalText;
-            });
-    });
-</script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const submitButton = document.querySelector('.submit-button');
+            submitButton.disabled = true;
+            submitButton.textContent = 'Sending...';
+            
+            const templateParams = {
+                from_name: document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                company: document.getElementById('company').value || 'Not provided',
+                revenue: document.getElementById('revenue').value,
+                goals: document.getElementById('goals').value,
+                budget: document.getElementById('budget').value,
+                timeline: document.getElementById('timeline').value,
+                message: document.getElementById('message').value || 'No message',
+                submission_date: new Date().toLocaleString()
+            };
+            
+            emailjs.send('service_l2pvpv3', 'template_z7l3w3q', templateParams)
+                .then(function() {
+                    window.location.href = 'thankyou.html?name=' + encodeURIComponent(templateParams.from_name);
+                })
+                .catch(function() {
+                    window.location.href = 'thankyou.html?email_failed=true&name=' + encodeURIComponent(templateParams.from_name);
+                })
+                .finally(function() {
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Get My Custom Strategy Plan';
+                });
+        });
+    </script>
 </body>
 </html>
