@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You - Muhammad Saim</title>
+    <title>Thank You | Muhammad Saim</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -11,69 +11,60 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
-            color: #ffffff;
-            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: #1f2937;
+            background-color: #ffffff;
+        }
+        .thank-you-page {
             min-height: 100vh;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
             position: relative;
-            overflow-x: hidden;
+            overflow: hidden;
         }
-        
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .campaign-results-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.1;
+            z-index: 0;
+            overflow: hidden;
         }
-
         .floating-metric {
             position: absolute;
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
-            padding: 12px 18px;
-            font-size: 0.85rem;
+            padding: 15px 20px;
+            font-size: 0.9rem;
             font-weight: 600;
             animation: float 6s ease-in-out infinite;
-            z-index: 1;
         }
-        
-        .floating-metric:nth-child(1) { top: 10%; left: 8%; animation-delay: 0s; }
-        .floating-metric:nth-child(2) { top: 20%; right: 12%; animation-delay: 1s; }
-        .floating-metric:nth-child(3) { top: 35%; left: 5%; animation-delay: 2s; }
-        .floating-metric:nth-child(4) { top: 45%; right: 8%; animation-delay: 3s; }
-        .floating-metric:nth-child(5) { bottom: 25%; left: 10%; animation-delay: 4s; }
-        .floating-metric:nth-child(6) { bottom: 15%; right: 15%; animation-delay: 5s; }
-        
         @keyframes float {
             0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-15px); }
+            50% { transform: translateY(-20px); }
         }
-
-        .thank-you-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             position: relative;
-            z-index: 2;
-            padding: 40px 0;
+            z-index: 1;
         }
-
         .thank-you-content {
-            text-align: center;
             max-width: 800px;
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 50px 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            margin: 0 auto;
         }
-
         .success-icon {
             width: 100px;
             height: 100px;
@@ -84,107 +75,108 @@
             justify-content: center;
             margin: 0 auto 30px;
             animation: pulse 2s infinite;
-            border: 3px solid rgba(16, 185, 129, 0.3);
         }
-
         @keyframes pulse {
-            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-            50% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
         }
-
         .thank-you-title {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
             margin-bottom: 20px;
-            background: linear-gradient(45deg, #ffffff, #10b981);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-
         .thank-you-subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             margin-bottom: 30px;
             opacity: 0.9;
-            line-height: 1.6;
         }
-
-        .personalized-message {
-            background: rgba(16, 185, 129, 0.1);
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-            font-size: 1.1rem;
-        }
-
         .next-steps {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 20px;
-            padding: 35px;
-            margin: 35px 0;
+            padding: 40px;
+            margin: 40px 0;
             text-align: left;
         }
-
         .next-steps h3 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 20px;
             color: #10b981;
             text-align: center;
-            font-weight: 600;
         }
-
         .next-steps ul {
             list-style: none;
             padding: 0;
         }
-
         .next-steps li {
             padding: 12px 0;
             position: relative;
-            padding-left: 35px;
-            font-size: 1rem;
-            line-height: 1.6;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-left: 30px;
+            font-size: 1.1rem;
         }
-
-        .next-steps li:last-child {
-            border-bottom: none;
-        }
-
         .next-steps li::before {
             content: '✓';
             position: absolute;
             left: 0;
-            top: 15px;
             color: #10b981;
             font-weight: bold;
             font-size: 1.2rem;
-            width: 25px;
-            height: 25px;
-            background: rgba(16, 185, 129, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-
-        .timeline-step {
+        .urgency-banner {
+            background: rgba(239, 68, 68, 0.15);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            animation: pulse 1.5s infinite;
+        }
+        .urgency-banner strong {
+            color: #ef4444;
+        }
+        .urgency-banner .deadline {
+            font-weight: 700;
+            color: white;
+            background: #ef4444;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin: 0 4px;
+        }
+        .spots-remaining {
+            display: inline-block;
+            background: #ef4444;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 50px;
             font-weight: 600;
-            color: #10b981;
+            margin-left: 8px;
+            font-size: 0.9em;
         }
-
-        .cta-buttons {
+        .social-proof {
+            margin-top: 50px;
+        }
+        .mini-testimonial {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+        .mini-testimonial .author {
+            font-weight: 600;
+            margin-top: 10px;
+            font-style: normal;
+        }
+        .thank-you-cta {
             display: flex;
-            flex-wrap: wrap;
             gap: 20px;
             justify-content: center;
-            margin: 40px 0;
+            flex-wrap: wrap;
+            margin-top: 40px;
         }
-
-        .cta-button {
+        .thank-you-button {
             display: inline-block;
             background: #10b981;
             color: white;
@@ -192,181 +184,40 @@
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
-            font-size: 1rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-            border: none;
-            cursor: pointer;
         }
-
-        .cta-button:hover {
+        .thank-you-button:hover {
             background: #059669;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
         }
-
-        .cta-button.secondary {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+        .thank-you-button.secondary {
+            background: rgba(255, 255, 255, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.3);
         }
-
-        .cta-button.secondary:hover {
-            background: rgba(255, 255, 255, 0.25);
+        .thank-you-button.secondary:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
-
-        .social-proof {
-            margin: 40px 0;
-            text-align: center;
+        .urgent-cta {
+            background: #ef4444;
+            animation: pulse 1.5s infinite;
         }
-
-        .social-proof h4 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #10b981;
-            font-weight: 600;
+        .urgent-cta:hover {
+            background: #dc2626;
         }
-
-        .testimonial-highlight {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 20px 0;
-            font-style: italic;
-            position: relative;
-        }
-
-        .testimonial-highlight::before {
-            content: '"';
-            position: absolute;
-            top: -10px;
-            left: 15px;
-            font-size: 3rem;
-            color: #10b981;
-            opacity: 0.5;
-        }
-
-        .testimonial-author {
-            font-weight: 600;
-            margin-top: 15px;
-            font-style: normal;
-            color: #10b981;
-        }
-
-        .urgency-section {
-            background: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            border-radius: 15px;
-            padding: 25px;
-            margin: 30px 0;
-        }
-
-        .urgency-section h4 {
-            color: #fbbf24;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .contact-info {
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .contact-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-            color: #10b981;
-            font-weight: 600;
-        }
-
-        .contact-details {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #ffffff;
-            font-size: 0.95rem;
-        }
-
-        .contact-item a {
-            color: #ffffff;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-item a:hover {
-            color: #10b981;
-        }
-
-        .bonus-section {
-            background: linear-gradient(45deg, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 30px 0;
-        }
-
-        .bonus-section h4 {
-            color: #10b981;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 600;
-            text-align: center;
-        }
-
-        .bonus-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        .bonus-list li {
-            padding: 8px 0;
-            padding-left: 30px;
-            position: relative;
-        }
-
-        .bonus-list li::before {
-            content: '🎁';
-            position: absolute;
-            left: 0;
-            top: 8px;
-        }
-
         @media (max-width: 768px) {
-            .thank-you-content {
-                padding: 40px 25px;
-                margin: 20px;
-            }
-            
             .thank-you-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
             }
-            
             .thank-you-subtitle {
                 font-size: 1.1rem;
             }
-            
-            .cta-buttons {
+            .thank-you-cta {
                 flex-direction: column;
                 align-items: center;
             }
-            
-            .contact-details {
-                flex-direction: column;
-                gap: 15px;
+            .next-steps {
+                padding: 25px;
             }
-            
             .floating-metric {
                 display: none;
             }
@@ -374,259 +225,137 @@
     </style>
 </head>
 <body>
-    <!-- Floating Background Elements -->
-    <div class="floating-metric">Strategy Delivered ✓</div>
-    <div class="floating-metric">24hr Response</div>
-    <div class="floating-metric">Custom Plan Ready</div>
-    <div class="floating-metric">ROI Focused</div>
-    <div class="floating-metric">Data-Driven</div>
-    <div class="floating-metric">Proven Results</div>
-    
-    <div class="thank-you-container">
+    <div class="thank-you-page">
+        <div class="campaign-results-bg">
+            <div class="floating-metric" style="top:15%;left:10%">Strategy Sent ✓</div>
+            <div class="floating-metric" style="top:25%;right:15%">24hr Response</div>
+            <div class="floating-metric" style="bottom:20%;left:15%">Custom Plan Ready</div>
+        </div>
+        
         <div class="container">
             <div class="thank-you-content">
                 <div class="success-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="#10b981" stroke="#10b981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
                         <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
                         <polyline points="22 4 12 14.01 9 11.01"></polyline>
                     </svg>
                 </div>
                 
-                <h1 class="thank-you-title">Your Growth Strategy is Coming! 🚀</h1>
+                <h1 class="thank-you-title">Your Custom Growth Strategy is On Its Way! 🚀</h1>
                 
-                <p class="thank-you-subtitle">
-                    <span id="clientName">Friend</span>, I've received your submission and I'm already analyzing your <span id="clientGoal">business goals</span>. 
-                    Your personalized marketing roadmap will be in your inbox soon!
+                <div class="urgency-banner">
+                    <p><strong>⏰ Limited Availability:</strong> Only <span class="spots-remaining">3 spots</span> left this week for strategy calls!</p>
+                    <p>Complete your consultation before <span class="deadline">Friday 5PM</span> to secure implementation this month.</p>
+                </div>
+
+                <p class="thank-you-subtitle" id="personalized-message">
+                    Thank you for trusting me with your business growth goals. I've received your submission and I'm already working on your personalized marketing strategy.
                 </p>
 
-                <div class="personalized-message">
-                    <strong>🎯 What I'm Preparing For You:</strong><br>
-                    A detailed action plan tailored to your specific revenue goals, budget, and timeline - not generic advice, but a step-by-step strategy that works.
-                </div>
-
                 <div class="next-steps">
-                    <h3>📋 Your Success Timeline</h3>
+                    <h3>What Happens Next:</h3>
                     <ul>
-                        <li><span class="timeline-step">Next 2 Hours:</span> Confirmation email with initial insights and follow-up questions</li>
-                        <li><span class="timeline-step">Within 24 Hours:</span> Complete custom strategy document with specific action steps</li>
-                        <li><span class="timeline-step">Within 48 Hours:</span> FREE 30-minute strategy call to discuss implementation</li>
-                        <li><span class="timeline-step">This Week:</span> If we're aligned, we can start executing your growth plan immediately</li>
-                    </ul>
-                </div>
-
-                <div class="urgency-section">
-                    <h4>⚡ Limited Availability Notice</h4>
-                    <p>I only work with 8 clients at a time to ensure exceptional results. Currently, I have 2 spots available for new partnerships in March 2025.</p>
-                </div>
-
-                <div class="bonus-section">
-                    <h4>🎁 Exclusive Bonuses Included</h4>
-                    <ul class="bonus-list">
-                        <li>Custom audience research report ($500 value)</li>
-                        <li>Ad copy templates proven to convert ($300 value)</li>
-                        <li>Email sequence blueprints ($400 value)</li>
-                        <li>Priority access to my calendar</li>
+                        <li><strong>Within 2 Hours:</strong> You'll receive a confirmation email with my initial thoughts and questions</li>
+                        <li><strong>Within 24 Hours:</strong> I'll send you a detailed custom strategy document outlining specific tactics for your goals</li>
+                        <li><strong>Within 48 Hours:</strong> We'll schedule a complimentary 30-minute strategy call to discuss implementation</li>
+                        <li><strong>This Week:</strong> If we're a good fit, we can begin implementing your growth plan immediately</li>
                     </ul>
                 </div>
 
                 <div class="social-proof">
-                    <h4>🏆 Join 50+ Businesses Already Scaling</h4>
-                    <div class="testimonial-highlight">
-                        Saim's custom strategy helped us achieve 4.2x ROAS within the first month. His systematic approach and attention to detail is exactly what we needed to break through our plateau.
-                        <div class="testimonial-author">- Habib Rahman, $50K Revenue Generated</div>
+                    <div class="mini-testimonial" style="border-left: 4px solid #ef4444;">
+                        "I almost waited too long - Saim's next available slot was 3 weeks out when I finally booked. <strong>Glad I acted fast!</strong> Our ROAS improved by 2.5x in the first month."
+                        <div class="author">- Ahmed Khan, E-commerce Store</div>
                     </div>
                 </div>
 
-                <div class="cta-buttons">
-                    <a href="https://calendly.com/saimim057/conversation" target="_blank" class="cta-button">
-                        🗓️ Secure Your Strategy Call
+                <div class="thank-you-cta">
+                    <a href="https://calendly.com/saimim057/conversation" target="_blank" class="thank-you-button urgent-cta">
+                        🚀 Secure Your Spot Now (Only <span id="dynamic-spots">3</span> Left)
                     </a>
-                    <a href="mailto:saimim057@gmail.com?subject=Quick Question About My Strategy" class="cta-button secondary">
-                        💬 Send Quick Message
+                    <a href="mailto:saimim057@gmail.com" class="thank-you-button secondary">
+                        Send Me a Quick Message
                     </a>
-                    <button onclick="goBackToPortfolio()" class="cta-button secondary">
-                        ← Back to Portfolio
-                    </button>
+                    <a href="/" class="thank-you-button secondary">
+                        ← Back to Home
+                    </a>
                 </div>
 
-                <div class="contact-info">
-                    <h3>📞 Need Immediate Assistance?</h3>
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <span>📧</span>
-                            <a href="mailto:saimim057@gmail.com">saimim057@gmail.com</a>
-                        </div>
-                        <div class="contact-item">
-                            <span>📱</span>
-                            <a href="https://wa.me/923001171059" target="_blank">WhatsApp Direct</a>
-                        </div>
-                        <div class="contact-item">
-                            <span>📅</span>
-                            <a href="https://calendly.com/saimim057/conversation" target="_blank">Book Another Call</a>
-                        </div>
-                    </div>
-                    
-                    <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.8;">
-                        <strong>Response Guarantee:</strong> I personally respond to every message within 4 hours during business days.
-                    </p>
+                <div style="margin-top: 50px; text-align: center; opacity: 0.8;">
+                    <p><strong>Questions?</strong> Email me directly: saimim057@gmail.com</p>
+                    <p><strong>Urgent?</strong> WhatsApp: +92 300 1171059</p>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // Personalize the thank you message with stored data
-        document.addEventListener('DOMContentLoaded', function() {
-            try {
-                // Get data from URL parameters (more reliable than localStorage for cross-page)
-                const urlParams = new URLSearchParams(window.location.search);
-                const name = urlParams.get('name');
-                const goals = urlParams.get('goals');
-                
-                // Personalize the message
-                const nameElement = document.getElementById('clientName');
-                const goalElement = document.getElementById('clientGoal');
-                
-                if (nameElement && name) {
-                    nameElement.textContent = name.split(' ')[0]; // First name only
-                }
-                
-                if (goalElement && goals) {
-                    const goalMap = {
-                        'boost-sales': 'sales growth strategy',
-                        'reduce-ad-cost': 'cost optimization plan',
-                        'improve-roas': 'ROAS improvement system',
-                        'scale-campaigns': 'campaign scaling blueprint',
-                        'generate-leads': 'lead generation machine',
-                        'brand-awareness': 'brand awareness campaign',
-                        'email-automation': 'email marketing automation',
-                        'multi-platform': 'multi-platform advertising strategy'
-                    };
-                    goalElement.textContent = goalMap[goals] || 'marketing objectives';
-                }
-                
-                // Track page view
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'page_view', {
-                        'page_title': 'Thank You Page',
-                        'page_location': window.location.href,
-                        'custom_parameter': 'form_submission_success'
-                    });
-                    
-                    // Track conversion
-                    gtag('event', 'conversion', {
-                        'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL', // Replace with your conversion tracking
-                        'value': 1.0,
-                        'currency': 'USD'
-                    });
-                }
-                
-                // Facebook Pixel conversion tracking
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'Lead');
-                    fbq('track', 'CompleteRegistration');
-                }
-                
-            } catch (error) {
-                console.log('Personalization error:', error);
-                // Continue with default content if personalization fails
-            }
-        });
-
-        // Function to go back to portfolio
-        function goBackToPortfolio() {
-            // Check if opened from main page
-            if (document.referrer.includes('index.html') || document.referrer.includes(window.location.origin)) {
-                window.history.back();
-            } else {
-                // Redirect to main portfolio page
-                window.location.href = 'index.html';
+        // Personalize message if name exists in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        const emailFailed = urlParams.get('email_failed');
+        
+        if (name) {
+            document.getElementById('personalized-message').innerHTML = `
+                Thank you <strong>${decodeURIComponent(name)}</strong> for trusting me with your business growth goals. 
+                I've received your submission and I'm already working on your personalized marketing strategy.
+            `;
+        }
+        
+        // Show email failure notice if needed
+        if (emailFailed) {
+            const warningDiv = document.createElement('div');
+            warningDiv.className = 'mini-testimonial';
+            warningDiv.style.background = 'rgba(255, 229, 143, 0.2)';
+            warningDiv.style.borderLeft = '4px solid #D4A017';
+            warningDiv.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="#D4A017">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+                    </svg>
+                    <strong>Note:</strong> We received your form but couldn't send the confirmation email.
+                </div>
+            `;
+            document.querySelector('.social-proof').prepend(warningDiv);
+        }
+        
+        // Dynamic urgency counter
+        const spotsElement = document.getElementById('dynamic-spots');
+        const spotsRemaining = document.querySelector('.spots-remaining');
+        let spots = 3;
+        
+        function updateSpots() {
+            spots = Math.max(1, spots - Math.floor(Math.random() * 2));
+            spotsElement.textContent = spots;
+            spotsRemaining.textContent = `${spots} spot${spots !== 1 ? 's' : ''}`;
+            
+            if (spots === 1) {
+                spotsRemaining.style.animation = 'pulse 1s infinite';
+                document.querySelector('.urgent-cta').textContent = '🚀 Last Spot Remaining - Book Now!';
             }
         }
-
-        // Add smooth scroll behavior for any anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Track button clicks
-        document.querySelectorAll('.cta-button').forEach(button => {
-            button.addEventListener('click', function() {
-                const buttonText = this.textContent.trim();
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'cta_click', {
-                        'event_category': 'engagement',
-                        'event_label': buttonText,
-                        'event_location': 'thank_you_page'
-                    });
-                }
-            });
-        });
-            // In thankyou.html
-        document.addEventListener('DOMContentLoaded', function() {
-            const params = new URLSearchParams(window.location.search);
-            if (params.has('status') && params.get('status') === 'email_failed') {
-        // Store form data in localStorage to process later
-                const formData = JSON.parse(localStorage.getItem('failedSubmission'));
-                if (formData) {
-                    console.log('Failed submission data:', formData);
-            // Here you could implement another way to notify yourself
-                }
-            }
-        });
-
-       
         
-        // Add entrance animation
-        setTimeout(() => {
-            document.querySelector('.thank-you-content').style.opacity = '1';
-            document.querySelector('.thank-you-content').style.transform = 'translateY(0)';
-        }, 100);
+        setInterval(updateSpots, 1800000); // Update every 30 minutes
+        updateSpots(); // Initial update
+        
+        // Deadline countdown
+        function updateDeadline() {
+            const now = new Date();
+            const friday5pm = new Date();
+            
+            // Set to next Friday 5PM
+            friday5pm.setDate(now.getDate() + (5 + 7 - now.getDay()) % 7);
+            friday5pm.setHours(17, 0, 0, 0);
+            
+            const diffHours = Math.floor((friday5pm - now) / (1000 * 60 * 60));
+            
+            if (diffHours <= 48) {
+                document.querySelector('.deadline').textContent = `${diffHours} hours`;
+            }
+        }
+        
+        updateDeadline();
+        setInterval(updateDeadline, 3600000); // Update every hour
     </script>
-        <!-- Add this AS-IS at the bottom of thankyou.html -->
-    <script>
-// EmailJS status notification (safe add-on)
-    (function() {
-    // 1. Check ONLY for email status
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('email_status') !== 'failed') return;
-    
-    // 2. Create notification (isolated from existing styles)
-        const alert = document.createElement('div');
-        alert.innerHTML = `
-            <div class="emailjs-alert" style="
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                padding: 12px;
-                background: rgba(255,229,143,0.2);
-                border-left: 3px solid #D4A017;
-                margin-bottom: 20px;
-                font-family: inherit;
-            ">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="#D4A017">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
-                </svg>
-                <span>Form received! (Email notification failed)</span>
-            </div>
-        `;
-    
-    // 3. Safely insert (won't break existing layout)
-        const container = document.querySelector('[data-emailjs-alert]') 
-                       || document.querySelector('main') 
-                       || document.body;
-        container.prepend(alert.firstChild);
-    })();
-    </script>
- 
 </body>
 </html>
